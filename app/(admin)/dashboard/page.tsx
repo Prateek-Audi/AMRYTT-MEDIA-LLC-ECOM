@@ -1,9 +1,10 @@
 import { NextPage } from "next";
+import DashboardPage from "@/components/Dashboard/Dashboard";
 
 const Page: NextPage = () => {
   return (
-    <div className="flex items-center justify-center h-full">
-      <h1 className="font-semibold text-center text-[40px] w-full">Admin Dashboard</h1>
+    <div className="w-full h-full">
+      <DashboardPage />
     </div>
   );
 };

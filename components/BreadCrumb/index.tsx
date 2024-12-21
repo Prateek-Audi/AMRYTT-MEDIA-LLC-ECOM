@@ -15,7 +15,7 @@ type BreadcrumbProps = {
 
 const defaultProps: BreadcrumbProps = {
   separator: `>`,
-  containerClassName: "flex items-center p-4 bg-[#D9E5D9]",
+  containerClassName: "flex items-center p-4 bg-[#FBFBFB]",
   listClassName: "flex text-xs items-center text-[#565656]",
   activeItemClassName: "text-[#565656]",
   capitalizeLinks: true

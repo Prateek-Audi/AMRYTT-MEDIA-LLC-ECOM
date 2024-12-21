@@ -1,8 +1,10 @@
 'use client'
 
 import { Card, CardHeader, CardBody, Tabs, Tab } from "@nextui-org/react";
+import { useState } from "react";
 
 const DashboardPage: React.FC = () => {
+
   return (
     <div className="flex-col md:flex">
       <div
@@ -47,8 +49,8 @@ const DashboardPage: React.FC = () => {
               </div>
             </div>
           </Tab>
-          <Tab title="Analytics" isDisabled>
-            <p>Analytics content goes here</p>
+          <Tab title="Analytics">
+            <p>Analytics Content Here</p>
           </Tab>
           <Tab title="Reports" isDisabled>
             <p>Reports content goes here</p>

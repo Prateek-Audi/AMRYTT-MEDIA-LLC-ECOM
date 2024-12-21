@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React from "react";
 import {
@@ -11,11 +11,15 @@ import {
   NavbarItem,
   NavbarMenuToggle,
   NavbarMenu,
-  Avatar
+  Avatar,
+  Badge,
+  Button,
+  Input,
 } from "@nextui-org/react";
 import Sidebar from "@/components/Sidebar";
 import { NavbarProps } from "@/types/navbar";
-import { ChevronDown, LogOut } from "lucide-react";
+import { Bell, LogOut, SearchIcon } from "lucide-react";
+import { IoMdArrowDropdown, IoMdNotifications } from "react-icons/io";
 import { useRouter } from "next/navigation";
 
 const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
@@ -24,38 +28,77 @@ const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
   const router = useRouter();
 
   const onHandleLogout = () => {
-    router.push("/login")
-  }
+    router.push("/dashboard");
+  };
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} className="h-20 bg-[#E8E9E4]">
+    <Navbar onMenuOpenChange={setIsMenuOpen} className="h-20 bg-[#FBFBFB]">
       <NavbarContent justify="start">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
+        <Input
+          classNames={{
+            base: "max-w-full sm:max-w-[10rem] h-10",
+            mainWrapper: "h-full",
+            input: "text-sm",
+            inputWrapper:
+              "h-full font-medium text-sm shadow-none text-[#858D9D] bg-[#FBFBFB]",
+          }}
+          placeholder="Search"
+          size="sm"
+          startContent={<SearchIcon size={18} />}
+          type="search"
+        />
       </NavbarContent>
       <NavbarContent justify="end">
+        <Badge
+          color="primary"
+          content="2"
+          className="bg-[#2BB2FE] border-none rounded-[4px]"
+        >
+          <Button
+            isIconOnly
+            aria-label="more than 2 notifications"
+            variant="light"
+          >
+            <Bell className="w-6 h-6 text-center" />
+          </Button>
+        </Badge>
         <NavbarItem>
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
-              <div className="flex items-center bg-[#1A1A1A] text-white px-4 py-3 rounded-xl cursor-pointer">
+              <div className="flex items-center px-4 py-3 rounded-xl cursor-pointer">
                 <div className="flex items-center gap-3">
-                  <Avatar
-                    isBordered
-                    className="w-6 h-6"
-                    src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                    alt="User Avatar"
-                  />
-                  <span className="text-sm font-semibold">Admin</span>
+                  <Badge
+                    color="success"
+                    content=""
+                    placement="bottom-right"
+                    shape="circle"
+                  >
+                    <Avatar
+                      className="w-7 h-7"
+                      src="https://images.unsplash.com/broken"
+                      alt="User Avatar"
+                    />
+                  </Badge>
+                  <div className="flex flex-col">
+                    <span className="text-sm text-[#1D1F2C] font-medium">
+                      Jenil Patel
+                    </span>
+                    <span className="text-xs text-[4A4656] font-medium">
+                      Manager
+                    </span>
+                  </div>
                 </div>
-                <div className="ml-12">
-                  <ChevronDown className="w-4 h-4" />
+                <div className="ml-4">
+                  <IoMdArrowDropdown className="text-[#858D9D] w-6 h-6" />
                 </div>
               </div>
             </DropdownTrigger>
-            <DropdownMenu 
-              aria-label="User Actions" 
+            <DropdownMenu
+              aria-label="User Actions"
               className="w-72"
               itemClasses={{
                 base: "rounded-none",
@@ -74,7 +117,9 @@ const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
                     alt="User Avatar"
                   />
                   <div className="flex flex-col">
-                    <p className="text-base font-semibold text-gray-800">Admin User</p>
+                    <p className="text-base font-semibold text-gray-800">
+                      Admin User
+                    </p>
                     <p className="text-sm text-gray-500">admin@example.com</p>
                   </div>
                 </div>
@@ -86,7 +131,9 @@ const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
                 color="danger"
                 onClick={onHandleLogout}
               >
-                <span className="text-sm font-medium text-red-500">Log Out</span>
+                <span className="text-sm font-medium text-red-500">
+                  Log Out
+                </span>
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>

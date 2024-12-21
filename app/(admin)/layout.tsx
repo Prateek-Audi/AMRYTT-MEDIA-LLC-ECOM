@@ -82,7 +82,7 @@ const AdminLayout = async ({ children }: AdminLayoutProps) => {
           height: "100vh"
         }}
       >
-        <div className="flex bg-[#F9FAF5] flex-1">
+        <div className="flex bg-[#FBFBFB] flex-1">
           <Sidebar menuItems={menuItems} />
           <main className="flex-1">
             <NavBar menuItems={menuItems} />
