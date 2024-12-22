@@ -21,7 +21,7 @@ import { LogOut, SearchIcon } from "lucide-react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import styles from "./navbar.module.css";
+import styles from "./Navbar.module.css";
 
 const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
