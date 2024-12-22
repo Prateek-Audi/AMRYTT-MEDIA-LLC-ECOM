@@ -28,7 +28,7 @@ const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
   const router = useRouter();
 
   const onHandleLogout = () => {
-    router.push("/dashboard");
+    router.push("/");
   };
 
   return (
