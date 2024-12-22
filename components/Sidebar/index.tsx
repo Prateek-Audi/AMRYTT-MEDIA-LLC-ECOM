@@ -2,13 +2,15 @@ import React from "react";
 import Link from "next/link";
 import * as Icons from "react-icons/fa";
 import Image from "next/image";
-import { Home } from "lucide-react";
+import { HiMiniSquares2X2 } from "react-icons/hi2";
 import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
 import { MenuItem, SidebarProps } from "@/types/sidebar";
+import styles from "./sidebar.module.css";
 
 const Sidebar: React.FC<SidebarProps> = ({ menuItems, mobile }) => {
   const renderMenuItem = (item: MenuItem, depth = 0) => {
-    const IconComponent = Icons[item.icon as keyof typeof Icons] || Home;
+    const IconComponent =
+      Icons[item.icon as keyof typeof Icons] || HiMiniSquares2X2;
 
     const fontSizeClass =
       depth === 0
@@ -22,7 +24,7 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems, mobile }) => {
         <li key={item.label}>
           <details className="group">
             <summary
-              className={`flex text-[#4A4C56] items-center gap-2 mb-2 cursor-pointer px-5 py-2 ${fontSizeClass}`}
+              className={`flex text-[#4A4C56] hover:border-l-4 hover:border-[#2086BF] items-center gap-2 mb-2 cursor-pointer px-5 py-3 ${fontSizeClass}`}
             >
               <IconComponent
                 className={`${
@@ -51,7 +53,7 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems, mobile }) => {
           href={item.href}
           className={`flex items-center text-[#4A4C56] gap-2 ${
             depth === 0 ? "px-5" : depth === 1 ? "px-[3rem]" : ""
-          } py-2 transition-all hover:border-l-4 hover:border-[#2086BF] ${fontSizeClass}`}
+          } py-3 transition-all hover:border-l-4 hover:border-[#2086BF] ${fontSizeClass}`}
         >
           {depth === 0 ? (
             <IconComponent
@@ -59,6 +61,11 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems, mobile }) => {
             />
           ) : null}
           <span className="flex-1">{item.label}</span>
+          {item.badgeContent && depth === 0 ? (
+            <p className="bg-[#2BB2FE] text-white text-[10px] font-semibold px-2 border-none rounded-[4px]">
+              {item.badgeContent}
+            </p>
+          ) : null}
         </Link>
       </li>
     );
@@ -71,11 +78,20 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems, mobile }) => {
       } relative`}
       style={{ height: mobile ? "100%" : "auto" }}
     >
-      <div className="flex h-14 mb-3 px-2 items-end lg:h-[59px]">
-        <Image src={""} alt="Logo" className="w-48" />
+      <div className="flex items-center px-6 pt-2 items-center lg:h-[59px]">
+        <Image
+          src="/assets/logo.svg"
+          alt="Logo"
+          width={150}
+          height={40}
+          className="w-auto"
+        />
+        <span className="text-2xl font-semibold text-[#1D1F2C] ml-2">
+          Mytech
+        </span>
       </div>
       <div
-        className="flex-1 mt-12 overflow-y-auto custom-scrollbar"
+        className={`flex-1 mt-6 overflow-y-auto custom-scrollbar ${styles["custom-height"]}`}
         style={{ maxHeight: "calc(100vh - 150px)" }}
       >
         <nav className="grid items-start text-sm font-medium">

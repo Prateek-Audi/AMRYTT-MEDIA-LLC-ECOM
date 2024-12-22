@@ -13,14 +13,15 @@ import {
   NavbarMenu,
   Avatar,
   Badge,
-  Button,
   Input,
 } from "@nextui-org/react";
 import Sidebar from "@/components/Sidebar";
 import { NavbarProps } from "@/types/navbar";
-import { Bell, LogOut, SearchIcon } from "lucide-react";
+import { LogOut, SearchIcon } from "lucide-react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import styles from "./navbar.module.css";
 
 const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -50,26 +51,57 @@ const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
           size="sm"
           startContent={<SearchIcon size={18} />}
           type="search"
+          className={`${styles["custom-search"]}`}
         />
       </NavbarContent>
       <NavbarContent justify="end">
-        <Badge
-          color="primary"
-          content="2"
-          className="bg-[#2BB2FE] border-none rounded-[4px]"
-        >
-          <Button
-            isIconOnly
-            aria-label="more than 2 notifications"
-            variant="light"
+        <div className={`flex gap-12 ${styles["nav-items"]}`}>
+          <Image
+            src={"/assets/calendar.svg"}
+            alt={""}
+            className="text-[#858D9D]"
+            width={24}
+            height={24}
+          />
+          <Badge
+            color="primary"
+            content="2"
+            className="bg-[#2BB2FE] border-none rounded-[4px]"
           >
-            <Bell className="w-6 h-6 text-center" />
-          </Button>
-        </Badge>
+            <Image
+              src={"/assets/bell.svg"}
+              alt={""}
+              className="text-[#858D9D]"
+              width={24}
+              height={24}
+            />
+          </Badge>
+          <Badge
+            color="primary"
+            content="2"
+            className="bg-[#2BB2FE] border-none rounded-[4px]"
+          >
+            <Image
+              src={"/assets/message.svg"}
+              alt={""}
+              className="text-[#858D9D]"
+              width={24}
+              height={24}
+            />
+          </Badge>
+          <Avatar
+            className="w-8 h-8"
+            src="https://images.unsplash.com/broken"
+            alt="User Avatar"
+          />
+        </div>
+        <div
+          className={`h-8 border-l border-gray-300 ${styles["nav-items"]}`}
+        ></div>
         <NavbarItem>
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
-              <div className="flex items-center px-4 py-3 rounded-xl cursor-pointer">
+              <div className="flex items-center pr-4 py-3 rounded-xl cursor-pointer">
                 <div className="flex items-center gap-3">
                   <Badge
                     color="success"
@@ -78,7 +110,7 @@ const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
                     shape="circle"
                   >
                     <Avatar
-                      className="w-7 h-7"
+                      className="w-9 h-9"
                       src="https://images.unsplash.com/broken"
                       alt="User Avatar"
                     />
@@ -118,9 +150,9 @@ const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
                   />
                   <div className="flex flex-col">
                     <p className="text-base font-semibold text-gray-800">
-                      Admin User
+                      Jenil Patel
                     </p>
-                    <p className="text-sm text-gray-500">admin@example.com</p>
+                    <p className="text-sm text-gray-500">jenil@example.com</p>
                   </div>
                 </div>
               </DropdownItem>

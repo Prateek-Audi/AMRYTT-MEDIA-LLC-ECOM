@@ -1,5 +1,22 @@
-@media (max-width: 426px){
-.main-content{
-    width: 100%;
+@media (max-width: 1300px) {
+  .sidebar {
+    width: 20%;
+  }
 }
+
+@media (max-width: 950px) {
+  .sidebar {
+    width: 25%;
+  }
+}
+@media (max-width: 769px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 426px) {
+  .main-content {
+    width: 100%;
+  }
 }

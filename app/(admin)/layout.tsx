@@ -4,18 +4,18 @@ import Sidebar from "@/components/Sidebar";
 import { MenuItem } from "@/types/sidebar";
 import { AdminLayoutProps } from "@/types/admin-layout";
 import NavBar from "@/components/Navbar";
-import Breadcrumb from "@/components/BreadCrumb";
 import styles from "./admin.module.css";
 import "react-toastify/dist/ReactToastify.css";
 
 async function getMenuItems(): Promise<MenuItem[]> {
   try {
     return [
-      { label: "Dashboard", icon: "FaHome", href: "/dashboard" },
+      { label: "Dashboard", icon: "", href: "/", badgeContent: 5 },
       {
         label: "E-Commerce",
-        icon: "FaUsers",
+        icon: "FaShoppingCart",
         href: "/",
+        badgeContent: 2,
         children: [
           {
             label: "Product",
@@ -41,12 +41,12 @@ async function getMenuItems(): Promise<MenuItem[]> {
       },
       {
         label: "Project",
-        icon: "FaProductHunt",
+        icon: "FaFileAlt",
         href: "/",
       },
       {
         label: "Contact",
-        icon: "FaShoppingBag",
+        icon: "FaIdCardAlt",
         href: "/",
         children: [
           {
@@ -58,11 +58,11 @@ async function getMenuItems(): Promise<MenuItem[]> {
       },
       {
         label: "File Manager",
-        icon: "FaChartLine",
+        icon: "FaFolder",
         href: "/",
       },
-      { label: "Chat", icon: "FaDollarSign", href: "/" },
-      { label: "Calendar", icon: "FaCog", href: "/" },
+      { label: "Chat", icon: "FaCommentAlt", href: "/" },
+      { label: "Calendar", icon: "FaCalendarMinus", href: "/" },
     ];
   } catch (error) {
     console.error("Error fetching menu items:", error);
@@ -83,11 +83,12 @@ const AdminLayout = async ({ children }: AdminLayoutProps) => {
         }}
       >
         <div className="w-full h-full flex bg-[#FBFBFB] flex-1">
-          <Sidebar menuItems={menuItems} />
-          <main className="flex-1 w-full h-full">
+          <div className={`w-[15%] ${styles.sidebar}`}>
+            <Sidebar menuItems={menuItems} />
+          </div>
+          <main className="w-[85%] flex-1 h-full">
             <NavBar menuItems={menuItems} />
-            <Breadcrumb />
-            <div className="overflow-auto h-full max-h-[80vh] max-w-full rounded-md custom-scrollbar">
+            <div className="overflow-auto h-full max-h-[86vh] max-w-full rounded-md custom-scrollbar">
               {children}
               <ToastContainer
                 position="top-right"
