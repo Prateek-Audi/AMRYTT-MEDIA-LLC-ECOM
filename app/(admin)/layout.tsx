@@ -79,15 +79,15 @@ const AdminLayout = async ({ children }: AdminLayoutProps) => {
         className={`flex flex-col ${styles["main-content"]}`}
         style={{
           width: "100vw",
-          height: "100vh"
+          height: "100vh",
         }}
       >
-        <div className="flex bg-[#FBFBFB] flex-1">
+        <div className="w-full h-full flex bg-[#FBFBFB] flex-1">
           <Sidebar menuItems={menuItems} />
-          <main className="flex-1">
+          <main className="flex-1 w-full h-full">
             <NavBar menuItems={menuItems} />
             <Breadcrumb />
-            <div className="overflow-auto h-full max-h-[74vh] max-w-[82vw] rounded-md mx-8 my-6 custom-scrollbar">
+            <div className="overflow-auto h-full max-h-[80vh] max-w-full rounded-md custom-scrollbar">
               {children}
               <ToastContainer
                 position="top-right"
