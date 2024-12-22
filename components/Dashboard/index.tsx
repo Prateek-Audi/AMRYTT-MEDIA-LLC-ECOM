@@ -1,81 +1,300 @@
 "use client";
 
-import { Card, CardHeader, CardBody, Tabs, Tab } from "@nextui-org/react";
+import React from "react";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  CircularProgress,
+  Table,
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+  User,
+  Chip,
+  Button,
+  Pagination,
+} from "@nextui-org/react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
+import { ChevronUp, ChevronDown } from "lucide-react";
+
+const revenueData = [
+  { month: "Jan", revenue: 600, sales: 400 },
+  { month: "Feb", revenue: 800, sales: 600 },
+];
+
+const recentOrders = [
+  {
+    id: 1,
+    product: "Handmade Pouch",
+    otherProducts: 3,
+    customer: "John Bushmill",
+    email: "john@email.com",
+    total: 121.0,
+    status: "Processing",
+  },
+];
+
+const cardData = [
+  {
+    title: "Total Project",
+    value: "6,784",
+    percentage: "10%",
+    percentageColor: "text-green-500",
+    dailyChange: "+$150 today",
+    icon: <ChevronUp className="w-4 h-4" />,
+  },
+  {
+    title: "In Progress",
+    value: "1,234",
+    percentage: "5%",
+    percentageColor: "text-yellow-500",
+    dailyChange: "+$50 today",
+    icon: <ChevronUp className="w-4 h-4" />,
+  },
+  {
+    title: "Finished",
+    value: "4,567",
+    percentage: "15%",
+    percentageColor: "text-green-500",
+    dailyChange: "+$200 today",
+    icon: <ChevronUp className="w-4 h-4" />,
+  },
+  {
+    title: "Unfinished",
+    value: "983",
+    percentage: "-2%",
+    percentageColor: "text-red-500",
+    dailyChange: "-$30 today",
+    icon: <ChevronUp className="w-4 h-4" />,
+  },
+];
 
 const DashboardPage: React.FC = () => {
   return (
-    <div className="flex-col md:flex">
-      <div
-        className="flex-1 space-y-4 overflow-y-auto custom-scrollbar p-6 pt-6"
-        style={{ maxHeight: "calc(100vh - 100px)" }}
-      >
-        <Tabs aria-label="Dashboard Tabs" color="default" variant="solid">
-          <Tab title="Overview">
-            <div className="space-y-4">
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                {[
-                  {
-                    title: "Total Revenue",
-                    value: "$45,231.89",
-                    change: "+20.1% from last month",
-                  },
-                  {
-                    title: "Subscriptions",
-                    value: "+2350",
-                    change: "+180.1% from last month",
-                  },
-                  {
-                    title: "Sales",
-                    value: "+12,234",
-                    change: "+19% from last month",
-                  },
-                  {
-                    title: "Active Now",
-                    value: "+573",
-                    change: "+201 since last hour",
-                  },
-                ].map((item, index) => (
-                  <Card key={index} className="bg-[#318531] text-white">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2">
-                      <span className="text-sm font-medium">{item.title}</span>
-                    </CardHeader>
-                    <CardBody>
-                      <div className="text-2xl font-bold">{item.value}</div>
-                      <p className="text-xs text-muted-foreground">
-                        {item.change}
-                      </p>
-                    </CardBody>
-                  </Card>
-                ))}
+    <div className="p-6 space-y-6">
+      {/* Header */}
+      <div className="flex justify-between items-center">
+        <div>
+          <h1 className="text-2xl font-semibold">Welcome Back Jenil</h1>
+          <p className="text-gray-500">
+            Lorem ipsum dolor si amet welcome back jenil
+          </p>
+        </div>
+        <Button color="default" variant="bordered">
+          Select Dates
+        </Button>
+      </div>
+
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {cardData.map((card, index) => (
+          <Card key={index}>
+            <CardBody>
+              <div className="space-y-2">
+                <span className="text-sm text-gray-500">{card.title}</span>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-2xl font-bold">{card.value}</h3>
+                  <div className={`flex items-center ${card.percentageColor}`}>
+                    {card.icon}
+                    <span>{card.percentage}</span>
+                  </div>
+                </div>
+                <span className="text-sm text-gray-500">
+                  {card.dailyChange}
+                </span>
               </div>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-                <Card className="col-span-4">
-                  <CardHeader>
-                    <span className="font-bold text-lg">Overview</span>
-                  </CardHeader>
-                </Card>
-                <Card className="col-span-3">
-                  <CardHeader>
-                    <span className="font-bold text-lg">Recent Sales</span>
-                  </CardHeader>
-                  <CardBody>
-                    <p>You made 265 sales this month.</p>
-                  </CardBody>
-                </Card>
+            </CardBody>
+          </Card>
+        ))}
+      </div>
+
+      {/* Charts Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Target Chart */}
+        <Card>
+          <CardHeader className="flex justify-between">
+            <div>
+              <h3 className="text-lg font-semibold">Target</h3>
+              <p className="text-sm text-gray-500">Revenue Target</p>
+            </div>
+            <Button isIconOnly variant="light">
+              <ChevronDown className="w-5 h-5" />
+            </Button>
+          </CardHeader>
+          <CardBody>
+            <div className="flex flex-col items-center">
+              <CircularProgress
+                size="lg"
+                classNames={{
+                  base: "max-w-md",
+                  track: "drop-shadow-md border border-default",
+                  indicator: "bg-gradient-to-r from-blue-500 to-blue-400",
+                  label: "tracking-wider font-medium text-default-600",
+                  value: "text-blue-500",
+                }}
+                value={75.55}
+                showValueLabel
+              />
+              <div className="mt-4 text-center">
+                <p>You succeed earn $240 today, its higher than yesterday</p>
+                <div className="flex justify-between mt-2">
+                  <div>
+                    <p className="text-sm text-gray-500">Target</p>
+                    <p className="font-semibold">$20k</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">Revenue</p>
+                    <p className="font-semibold">$16k</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">Today</p>
+                    <p className="font-semibold">$1.5k</p>
+                  </div>
+                </div>
               </div>
             </div>
-          </Tab>
-          <Tab title="Analytics">
-            <p>Analytics Content Here</p>
-          </Tab>
-          <Tab title="Reports" isDisabled>
-            <p>Reports content goes here</p>
-          </Tab>
-          <Tab title="Notifications" isDisabled>
-            <p>Notifications content goes here</p>
-          </Tab>
-        </Tabs>
+          </CardBody>
+        </Card>
+
+        {/* Revenue Chart */}
+        <Card>
+          <CardHeader className="flex justify-between">
+            <div>
+              <h3 className="text-lg font-semibold">Statistic</h3>
+              <p className="text-sm text-gray-500">Revenue and Sales</p>
+            </div>
+            <Button isIconOnly variant="light">
+              <ChevronDown className="w-5 h-5" />
+            </Button>
+          </CardHeader>
+          <CardBody>
+            <LineChart width={500} height={300} data={revenueData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="revenue" stroke="#8884d8" />
+              <Line type="monotone" dataKey="sales" stroke="#82ca9d" />
+            </LineChart>
+          </CardBody>
+        </Card>
       </div>
+
+      {/* Recent Orders Table */}
+      <Card>
+        <CardHeader className="flex justify-between">
+          <div className="flex items-center gap-2">
+            <h3 className="text-lg font-semibold">Recent Orders</h3>
+            <Chip size="sm" color="success">
+              +2 Orders
+            </Chip>
+          </div>
+          <div className="flex gap-2">
+            <Button variant="bordered">Select Date</Button>
+            <Button variant="bordered">Filters</Button>
+            <Button color="primary">See All</Button>
+          </div>
+        </CardHeader>
+        <CardBody>
+          <Table aria-label="Recent orders table">
+            <TableHeader>
+              <TableColumn>PRODUCT</TableColumn>
+              <TableColumn>CUSTOMER</TableColumn>
+              <TableColumn>TOTAL</TableColumn>
+              <TableColumn>STATUS</TableColumn>
+              <TableColumn>ACTION</TableColumn>
+            </TableHeader>
+            <TableBody>
+              {recentOrders.map((order) => (
+                <TableRow key={order.id}>
+                  <TableCell>
+                    <User
+                      name={order.product}
+                      description={`+${order.otherProducts} other products`}
+                      avatarProps={{
+                        src: "/placeholder-product.png",
+                      }}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <div>
+                      <p>{order.customer}</p>
+                      <p className="text-sm text-gray-500">{order.email}</p>
+                    </div>
+                  </TableCell>
+                  <TableCell>${order.total}</TableCell>
+                  <TableCell>
+                    <Chip
+                      color={
+                        order.status === "Processing" ? "warning" : "success"
+                      }
+                      size="sm"
+                    >
+                      {order.status}
+                    </Chip>
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex gap-2">
+                      <Button isIconOnly size="sm" variant="light">
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                          />
+                        </svg>
+                      </Button>
+                      <Button isIconOnly size="sm" variant="light">
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                          />
+                        </svg>
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+          <div className="flex justify-between items-center mt-4">
+            <p className="text-sm text-gray-500">Showing 1-5 from 100</p>
+            <Pagination total={20} boundaries={0} initialPage={1} />
+          </div>
+        </CardBody>
+      </Card>
     </div>
   );
 };
