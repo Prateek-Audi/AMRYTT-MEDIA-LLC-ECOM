@@ -19,7 +19,7 @@ import {
 import Sidebar from "@/components/Sidebar";
 import { NavbarProps } from "@/types/navbar";
 import { Bell, LogOut, SearchIcon } from "lucide-react";
-import { IoMdArrowDropdown, IoMdNotifications } from "react-icons/io";
+import { IoMdArrowDropdown } from "react-icons/io";
 import { useRouter } from "next/navigation";
 
 const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
