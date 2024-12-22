@@ -3,7 +3,7 @@ import DashboardPage from "@/components/Dashboard";
 
 const Page: NextPage = () => {
   return (
-    <div className="w-full h-[100%]">
+    <div className="w-full h-full">
       <DashboardPage />
     </div>
   );
