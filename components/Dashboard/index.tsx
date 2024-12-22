@@ -28,14 +28,11 @@ import {
 } from "recharts";
 import { ChevronUp, ChevronDown } from "lucide-react";
 
-// Mock data for the revenue chart
 const revenueData = [
   { month: "Jan", revenue: 600, sales: 400 },
   { month: "Feb", revenue: 800, sales: 600 },
-  // Add more monthly data...
 ];
 
-// Mock data for recent orders
 const recentOrders = [
   {
     id: 1,
@@ -46,7 +43,6 @@ const recentOrders = [
     total: 121.0,
     status: "Processing",
   },
-  // Add more orders...
 ];
 
 const cardData = [
@@ -80,7 +76,7 @@ const cardData = [
     percentage: "-2%",
     percentageColor: "text-red-500",
     dailyChange: "-$30 today",
-    icon: <ChevronUp className="w-4 h-4" />, // Use a downward arrow icon if needed
+    icon: <ChevronUp className="w-4 h-4" />,
   },
 ];
 
@@ -102,24 +98,26 @@ const DashboardPage: React.FC = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      {cardData.map((card, index) => (
-        <Card key={index}>
-          <CardBody>
-            <div className="space-y-2">
-              <span className="text-sm text-gray-500">{card.title}</span>
-              <div className="flex items-center justify-between">
-                <h3 className="text-2xl font-bold">{card.value}</h3>
-                <div className={`flex items-center ${card.percentageColor}`}>
-                  {card.icon}
-                  <span>{card.percentage}</span>
+        {cardData.map((card, index) => (
+          <Card key={index}>
+            <CardBody>
+              <div className="space-y-2">
+                <span className="text-sm text-gray-500">{card.title}</span>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-2xl font-bold">{card.value}</h3>
+                  <div className={`flex items-center ${card.percentageColor}`}>
+                    {card.icon}
+                    <span>{card.percentage}</span>
+                  </div>
                 </div>
+                <span className="text-sm text-gray-500">
+                  {card.dailyChange}
+                </span>
               </div>
-              <span className="text-sm text-gray-500">{card.dailyChange}</span>
-            </div>
-          </CardBody>
-        </Card>
-      ))}
-    </div>
+            </CardBody>
+          </Card>
+        ))}
+      </div>
 
       {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

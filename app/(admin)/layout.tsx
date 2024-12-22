@@ -15,54 +15,54 @@ async function getMenuItems(): Promise<MenuItem[]> {
       {
         label: "E-Commerce",
         icon: "FaUsers",
-        href: "/dashboard",
+        href: "/",
         children: [
           {
             label: "Product",
             icon: "FaUser",
-            href: "/dashboard",
+            href: "/product",
           },
           {
             label: "Categories",
             icon: "FaUser",
-            href: "/size",
+            href: "/",
           },
           {
             label: "Orders",
             icon: "FaUser",
-            href: "/color",
+            href: "/",
           },
           {
             label: "Customer",
             icon: "FaUser",
-            href: "/banner",
+            href: "/",
           },
         ],
       },
       {
         label: "Project",
         icon: "FaProductHunt",
-        href: "/dashboard",
+        href: "/",
       },
       {
         label: "Contact",
         icon: "FaShoppingBag",
-        href: "/dashboard",
+        href: "/",
         children: [
           {
             label: "User Info",
             icon: "FaUser",
-            href: "/product-approvals",
+            href: "/",
           },
         ],
       },
       {
         label: "File Manager",
         icon: "FaChartLine",
-        href: "/dashboard",
+        href: "/",
       },
-      { label: "Chat", icon: "FaDollarSign", href: "/notifications" },
-      { label: "Calendar", icon: "FaCog", href: "/coupons" },
+      { label: "Chat", icon: "FaDollarSign", href: "/" },
+      { label: "Calendar", icon: "FaCog", href: "/" },
     ];
   } catch (error) {
     console.error("Error fetching menu items:", error);
