@@ -54,6 +54,7 @@ const cardData = [
     percentageColor: "text-green-500",
     dailyChange: "+$150 today",
     icon: <ChevronUp className="w-4 h-4" />,
+    badgeUrl: "/assets/card1-badge.svg",
   },
   {
     title: "In Progress",
@@ -62,6 +63,7 @@ const cardData = [
     percentageColor: "text-yellow-500",
     dailyChange: "+$50 today",
     icon: <ChevronUp className="w-4 h-4" />,
+    badgeUrl: "/assets/card2-badge.svg",
   },
   {
     title: "Finished",
@@ -70,6 +72,7 @@ const cardData = [
     percentageColor: "text-green-500",
     dailyChange: "+$200 today",
     icon: <ChevronUp className="w-4 h-4" />,
+    badgeUrl: "/assets/card3-badge.svg",
   },
   {
     title: "Unfinished",
@@ -78,6 +81,7 @@ const cardData = [
     percentageColor: "text-red-500",
     dailyChange: "-$30 today",
     icon: <ChevronUp className="w-4 h-4" />,
+    badgeUrl: "/assets/card4-badge.svg",
   },
 ];
 
@@ -108,17 +112,20 @@ const DashboardPage: React.FC = () => {
           <Card key={index}>
             <CardBody>
               <div className="space-y-2">
-                <span className="text-sm text-gray-500">{card.title}</span>
                 <div className="flex items-center justify-between">
-                  <h3 className="text-2xl font-bold">{card.value}</h3>
-                  <div className={`flex items-center ${card.percentageColor}`}>
-                    {card.icon}
-                    <span>{card.percentage}</span>
-                  </div>
+                  <span className="text-sm text-gray-500">{card.title}</span>
+                  <Image src={card.badgeUrl} alt={""} width={28} height={28} />
                 </div>
-                <span className="text-sm text-gray-500">
-                  {card.dailyChange}
-                </span>
+                <h3 className="text-2xl font-bold">{card.value}</h3>
+                <div className="flex items-center gap-1">
+                  <div className={`flex items-center ${card.percentageColor}`}>
+                    <span>{card.percentage}</span>
+                    {card.icon}
+                  </div>
+                  <span className="text-sm text-gray-500">
+                    {card.dailyChange}
+                  </span>
+                </div>
               </div>
             </CardBody>
           </Card>
@@ -203,14 +210,43 @@ const DashboardPage: React.FC = () => {
         <CardHeader className="flex justify-between">
           <div className="flex items-center gap-2">
             <h3 className="text-lg font-semibold">Recent Orders</h3>
-            <Chip size="sm" color="success">
+            <Chip
+              size="md"
+              className="bg-[#E9FAF7] text-sm font-semibol text-[#1A9882] rounded-lg"
+            >
               +2 Orders
             </Chip>
           </div>
           <div className="flex gap-2">
-            <Button variant="bordered">Select Date</Button>
-            <Button variant="bordered">Filters</Button>
-            <Button color="primary">See All</Button>
+            <Button
+              color="default"
+              variant="bordered"
+              className="text-sm font-normal text-[#4A4C56] border-[#E0E2E7] rounded-lg flex gap-2"
+            >
+              <Image
+                src={"/assets/calendar.svg"}
+                alt={""}
+                width={16}
+                height={16}
+              />
+              Select Date
+            </Button>
+            <Button
+              color="default"
+              variant="bordered"
+              className="text-sm font-normal text-[#4A4C56] border-[#E0E2E7] rounded-lg flex gap-2"
+            >
+              <Image
+                src={"/assets/setting-slider.svg"}
+                alt={""}
+                width={16}
+                height={16}
+              />
+              Filters
+            </Button>
+            <Button className="bg-[#EAF8FF] text-sm font-semibold text-[#2086BF] rounded-lg">
+              See All
+            </Button>
           </div>
         </CardHeader>
         <CardBody>
