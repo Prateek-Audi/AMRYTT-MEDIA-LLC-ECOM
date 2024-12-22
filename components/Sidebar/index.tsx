@@ -76,7 +76,7 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems, mobile }) => {
       className={`transition-all duration-300 text-black bg-white ${
         mobile ? "block md:hidden h-full" : "hidden md:block"
       } relative`}
-      style={{ height: mobile ? "100%" : "auto" }}
+      style={{ height: mobile ? "100vh" : "100%" }}
     >
       <div className="flex items-center px-6 pt-2 items-center lg:h-[59px]">
         <Image
@@ -92,7 +92,7 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems, mobile }) => {
       </div>
       <div
         className={`flex-1 mt-6 overflow-y-auto custom-scrollbar ${styles["custom-height"]}`}
-        style={{ maxHeight: "calc(100vh - 150px)" }}
+        style={{ maxHeight: "calc(100vh - 100px)" }}
       >
         <nav className="grid items-start text-sm font-medium">
           <ul className="flex flex-col w-full">
