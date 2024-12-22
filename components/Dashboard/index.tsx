@@ -27,6 +27,7 @@ import {
   Legend,
 } from "recharts";
 import { ChevronUp, ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 const revenueData = [
   { month: "Jan", revenue: 600, sales: 400 },
@@ -82,16 +83,21 @@ const cardData = [
 
 const DashboardPage: React.FC = () => {
   return (
-    <div className="p-6 space-y-6">
+    <div className="px-6 pb-2 space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-end">
         <div>
           <h1 className="text-2xl font-semibold">Welcome Back Jenil</h1>
           <p className="text-gray-500">
             Lorem ipsum dolor si amet welcome back jenil
           </p>
         </div>
-        <Button color="default" variant="bordered">
+        <Button
+          color="default"
+          variant="bordered"
+          className="text-sm font-normal text-[#4A4C56] border-[#E0E2E7] rounded-lg flex gap-2"
+        >
+          <Image src={"/assets/calendar.svg"} alt={""} width={16} height={16} />
           Select Dates
         </Button>
       </div>
