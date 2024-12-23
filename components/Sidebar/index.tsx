@@ -78,7 +78,7 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems, mobile }) => {
       } relative`}
       style={{ height: mobile ? "100vh" : "100%" }}
     >
-      <div className="flex items-center px-6 pt-2 items-center lg:h-[59px]">
+      <div className="flex items-center px-6 pt-2 items-center lg:h-[59px] cursor-pointer">
         <Image
           src="/assets/logo.svg"
           alt="Logo"

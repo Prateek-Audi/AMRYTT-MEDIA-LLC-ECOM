@@ -59,19 +59,19 @@ const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
           <Image
             src={"/assets/calendar.svg"}
             alt={""}
-            className="text-[#858D9D]"
+            className="text-[#858D9D] cursor-pointer"
             width={24}
             height={24}
           />
           <Badge
             color="primary"
             content="2"
-            className="bg-[#2BB2FE] border-none rounded-[4px]"
+            className="bg-[#2BB2FE] border-none rounded-[4px] cursor-pointer"
           >
             <Image
               src={"/assets/bell.svg"}
               alt={""}
-              className="text-[#858D9D]"
+              className="text-[#858D9D] cursor-pointer"
               width={24}
               height={24}
             />
@@ -79,18 +79,18 @@ const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
           <Badge
             color="primary"
             content="2"
-            className="bg-[#2BB2FE] border-none rounded-[4px]"
+            className="bg-[#2BB2FE] border-none rounded-[4px] cursor-pointer"
           >
             <Image
               src={"/assets/message.svg"}
               alt={""}
-              className="text-[#858D9D]"
+              className="text-[#858D9D] cursor-pointer"
               width={24}
               height={24}
             />
           </Badge>
           <Avatar
-            className="w-8 h-8"
+            className="w-8 h-8 cursor-pointer"
             src="https://images.unsplash.com/broken"
             alt="User Avatar"
           />
