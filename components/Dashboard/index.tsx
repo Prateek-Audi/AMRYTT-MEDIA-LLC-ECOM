@@ -27,7 +27,6 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import { ChevronUp, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 const revenueData = [
