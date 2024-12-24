@@ -629,9 +629,9 @@ const ProductTable = () => {
           showShadow
           color="primary"
           page={page}
-          total={pages}
+          total={pages+5}
           onChange={setPage}
-          boundaries={1}
+          boundaries={0}
         />
       </div>
     );
