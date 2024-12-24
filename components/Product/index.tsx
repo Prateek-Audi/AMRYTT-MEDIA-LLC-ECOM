@@ -20,6 +20,8 @@ import {
   Selection,
   ChipProps,
   SortDescriptor,
+  Tab,
+  Tabs,
 } from "@nextui-org/react";
 import Image from "next/image";
 import DatePicker from "../DatePicker";
@@ -534,13 +536,27 @@ const ProductTable = () => {
   const topContent = React.useMemo(() => {
     return (
       <div className="flex flex-col gap-4">
-        <div className="flex justify-between gap-3 items-end">
-            
-          <div className="flex gap-3">
+        <div className="flex xl:flex lg:flex md:flex sm:flex hidden justify-between gap-3 items-end">
+          <Tabs
+            variant="bordered"
+            classNames={{
+              cursor: "bg-[#EAF8FF] rounded-sm",
+              tabContent: "group-data-[selected=true]:text-[#2086BF]",
+              tabList: "rounded-md shadow-none border-[#E0E2E7]",
+            }}
+            size="md"
+            radius="none"
+          >
+            <Tab title="All Product"></Tab>
+            <Tab title="Published"></Tab>
+            <Tab title="Low Stocked"></Tab>
+            <Tab title="Draft"></Tab>
+          </Tabs>
+          <div className="flex xl:flex lg:hidden md:hidden hidden gap-3">
             <Input
               isClearable
-              className="w-full sm:max-w-[44%]"
-              placeholder="Searchproduct..."
+              className="w-full sm:max-w-[40%]"
+              placeholder="Search product..."
               startContent={<SearchIcon />}
               value={filterValue}
               onClear={() => onClear()}
@@ -610,32 +626,14 @@ const ProductTable = () => {
             : `${selectedKeys.size} of ${filteredItems.length} selected`}
         </span>
         <Pagination
-          isCompact
           showControls
           showShadow
           color="primary"
           page={page}
           total={pages}
           onChange={setPage}
+          boundaries={1}
         />
-        <div className="hidden sm:flex w-[30%] justify-end gap-2">
-          <Button
-            isDisabled={pages === 1}
-            size="sm"
-            variant="flat"
-            onPress={onPreviousPage}
-          >
-            Previous
-          </Button>
-          <Button
-            isDisabled={pages === 1}
-            size="sm"
-            variant="flat"
-            onPress={onNextPage}
-          >
-            Next
-          </Button>
-        </div>
       </div>
     );
   }, [selectedKeys, items.length, page, pages, hasSearchFilter]);
@@ -645,9 +643,9 @@ const ProductTable = () => {
       isHeaderSticky
       aria-label="Example table with custom cells, pagination and sorting"
       bottomContent={bottomContent}
-      bottomContentPlacement="outside"
+      bottomContentPlacement="inside"
       classNames={{
-        wrapper: "max-h-[382px]",
+        wrapper: "max-h-full",
       }}
       selectedKeys={selectedKeys}
       selectionMode="multiple"
