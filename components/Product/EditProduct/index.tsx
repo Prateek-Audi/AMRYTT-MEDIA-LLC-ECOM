@@ -50,7 +50,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
   return (
     <div className="w-full mx-auto p-6 space-y-6">
       <div className="grid grid-cols-1 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 gap-6">
-        <div className="col-span-1 xl:col-span-3 lg:col-span-2 md:col-span-2 flex flex-col gap-6">
+        <div className="col-span-1 order-last xl:col-span-3 lg:col-span-2 md:col-span-2 xl:order-first lg:order-first md:order-first flex flex-col gap-6">
           {/* General Information */}
           <Card className="bg-white">
             <CardHeader className="text-lg font-semibold text-[#1D1F2C]">
