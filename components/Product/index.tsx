@@ -10,10 +10,6 @@ import {
   TableCell,
   Input,
   Button,
-  DropdownTrigger,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
   Chip,
   User,
   Pagination,
@@ -410,7 +406,7 @@ const ProductTable = () => {
   }, []);
 
   const filteredItems = React.useMemo(() => {
-    let filteredUsers = [...users];
+    const filteredUsers = [...users];
 
     return filteredUsers;
   }, [users, filterValue]);
