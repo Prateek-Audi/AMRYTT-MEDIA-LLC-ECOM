@@ -10,7 +10,7 @@ import {
   CardBody,
   CardHeader,
   Chip,
-  Divider,
+  
 } from "@nextui-org/react";
 import { ProductFormData, ProductVariation } from "@/types/product";
 import Image from "next/image";
@@ -146,7 +146,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                     No Discount
                   </SelectItem>
                   <SelectItem key="percentage" value="Percentage">
-                    Percentage
+                    Percentage{id}
                   </SelectItem>
                 </Select>
                 <Input

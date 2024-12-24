@@ -24,7 +24,6 @@ import {
   Tabs,
 } from "@nextui-org/react";
 import Image from "next/image";
-import DatePicker from "../DatePicker";
 
 export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
@@ -392,6 +391,8 @@ const ProductTable = () => {
     direction: "ascending",
   });
 
+  setStatusFilter("all");
+
   const [page, setPage] = React.useState(1);
 
   const hasSearchFilter = Boolean(filterValue);
@@ -498,18 +499,6 @@ const ProductTable = () => {
         return cellValue;
     }
   }, []);
-
-  const onNextPage = React.useCallback(() => {
-    if (page < pages) {
-      setPage(page + 1);
-    }
-  }, [page, pages]);
-
-  const onPreviousPage = React.useCallback(() => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
-  }, [page]);
 
   const onRowsPerPageChange = React.useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -631,7 +620,7 @@ const ProductTable = () => {
           color="primary"
           page={page}
           total={pages}
-          onChange={setPage}
+          onChange={setPage || setVisibleColumns}
           boundaries={1}
         />
       </div>
