@@ -24,9 +24,15 @@ import {
   Tabs,
 } from "@nextui-org/react";
 import Image from "next/image";
+import Link from "next/link";
+import { Ban, Eye, Pencil, Trash } from "lucide-react";
 
 export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
+};
+
+export type ColumnType = {
+  id: number;
 };
 
 export function capitalize(s: string) {
@@ -147,7 +153,11 @@ export const ChevronDownIcon = ({
 };
 
 export const columns = [
-  { name: "ID", uid: "id", sortable: true },
+  {
+    name: "ID",
+    uid: "id",
+    sortable: true,
+  },
   { name: "NAME", uid: "name", sortable: true },
   { name: "AGE", uid: "age", sortable: true },
   { name: "ROLE", uid: "role", sortable: true },
@@ -381,49 +391,29 @@ const ProductTable = () => {
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
     new Set([])
   );
-  const [visibleColumns, setVisibleColumns] = React.useState<Selection>(
-    new Set(INITIAL_VISIBLE_COLUMNS)
-  );
-  const [statusFilter, setStatusFilter] = React.useState<Selection>("all");
+  // const [visibleColumns, setVisibleColumns] = React.useState<Selection>(
+  //   new Set(INITIAL_VISIBLE_COLUMNS)
+  // );
+  // const [statusFilter, setStatusFilter] = React.useState<Selection>("all");
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [sortDescriptor, setSortDescriptor] = React.useState<SortDescriptor>({
     column: "age",
     direction: "ascending",
   });
 
-  setStatusFilter("all");
-
   const [page, setPage] = React.useState(1);
 
   const hasSearchFilter = Boolean(filterValue);
 
   const headerColumns = React.useMemo(() => {
-    if (visibleColumns === "all") return columns;
-
-    return columns.filter((column) =>
-      Array.from(visibleColumns).includes(column.uid)
-    );
-  }, [visibleColumns]);
+    return columns.filter((col) => INITIAL_VISIBLE_COLUMNS.includes(col.uid));
+  }, []);
 
   const filteredItems = React.useMemo(() => {
     let filteredUsers = [...users];
 
-    if (hasSearchFilter) {
-      filteredUsers = filteredUsers.filter((user) =>
-        user.name.toLowerCase().includes(filterValue.toLowerCase())
-      );
-    }
-    if (
-      statusFilter !== "all" &&
-      Array.from(statusFilter).length !== statusOptions.length
-    ) {
-      filteredUsers = filteredUsers.filter((user) =>
-        Array.from(statusFilter).includes(user.status)
-      );
-    }
-
     return filteredUsers;
-  }, [users, filterValue, statusFilter]);
+  }, [users, filterValue]);
 
   const pages = Math.ceil(filteredItems.length / rowsPerPage);
 
@@ -480,19 +470,45 @@ const ProductTable = () => {
         );
       case "actions":
         return (
-          <div className="relative flex justify-end items-center gap-2">
-            <Dropdown>
-              <DropdownTrigger>
-                <Button isIconOnly size="sm" variant="light">
-                  <VerticalDotsIcon className="text-default-300" />
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu>
-                <DropdownItem key="view">View</DropdownItem>
-                <DropdownItem key="edit">Edit</DropdownItem>
-                <DropdownItem key="delete">Delete</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
+          <div className="flex gap-1">
+            <Link href={`/product/1`}>
+              <Button
+                size="sm"
+                color="primary"
+                variant="light"
+                className="border border-solid border-[#318531] rounded-full"
+                isIconOnly
+              >
+                <Pencil className="w-4 h-4 text-[#318531]" />
+              </Button>
+            </Link>
+            <Button
+              size="sm"
+              color="danger"
+              variant="light"
+              className="border border-solid border-[#BC1320] rounded-full"
+              isIconOnly
+            >
+              <Trash className="w-4 h-4 text-[#BC1320]" />
+            </Button>
+            <Button
+              size="sm"
+              color="default"
+              variant="light"
+              className="border border-solid border-[#000000] rounded-full"
+              isIconOnly
+            >
+              <Eye className="w-4 h-4 text-[#000000]" />
+            </Button>
+            <Button
+              size="sm"
+              color="danger"
+              variant="light"
+              className="border border-solid border-[#BC1320] rounded-full"
+              isIconOnly
+            >
+              <Ban className="w-4 h-4 text-[#BC1320]" />
+            </Button>
           </div>
         );
       default:
@@ -598,8 +614,6 @@ const ProductTable = () => {
     );
   }, [
     filterValue,
-    statusFilter,
-    visibleColumns,
     onSearchChange,
     onRowsPerPageChange,
     users.length,
@@ -620,7 +634,7 @@ const ProductTable = () => {
           color="primary"
           page={page}
           total={pages}
-          onChange={setPage || setVisibleColumns}
+          onChange={setPage}
           boundaries={1}
         />
       </div>
