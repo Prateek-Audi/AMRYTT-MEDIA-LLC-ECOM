@@ -387,10 +387,6 @@ const ProductTable = () => {
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
     new Set([])
   );
-  // const [visibleColumns, setVisibleColumns] = React.useState<Selection>(
-  //   new Set(INITIAL_VISIBLE_COLUMNS)
-  // );
-  // const [statusFilter, setStatusFilter] = React.useState<Selection>("all");
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [sortDescriptor, setSortDescriptor] = React.useState<SortDescriptor>({
     column: "age",
