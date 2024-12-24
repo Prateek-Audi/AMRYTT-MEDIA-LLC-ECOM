@@ -9,7 +9,7 @@ const ProductLayout = ({ children }: ProductLayoutProps) => {
   return (
     <main className="flex flex-col w-full h-full">
       <Breadcrumb />
-      <div className="w-full h-full">{children}</div>
+      <div className="overflow-y-auto w-full h-full">{children}</div>
     </main>
   );
 };

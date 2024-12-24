@@ -1,3 +1,4 @@
+import EditProduct from "@/components/Product/EditProduct";
 import { NextPage } from "next";
 
 type Props = {
@@ -7,7 +8,11 @@ type Props = {
 };
 
 const Page: NextPage<Props> = ({ params }) => {
-  return <>{params.productId}:- Product Edit</>;
+  return (
+    <>
+      <EditProduct id={params.productId} />
+    </>
+  );
 };
 
 export default Page;
