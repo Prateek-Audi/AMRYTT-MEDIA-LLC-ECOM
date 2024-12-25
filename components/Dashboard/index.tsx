@@ -28,7 +28,14 @@ import {
   Legend,
 } from "recharts";
 import Image from "next/image";
-import { categories, customers, recentOrders, revenueData, salesData, topProducts } from "./data";
+import {
+  categories,
+  customers,
+  recentOrders,
+  revenueData,
+  salesData,
+  topProducts,
+} from "./data";
 
 const cardData = [
   {
