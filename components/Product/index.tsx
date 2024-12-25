@@ -21,7 +21,6 @@ import {
 } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
-import { Ban, Eye, Pencil, Trash } from "lucide-react";
 
 export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
@@ -462,44 +461,34 @@ const ProductTable = () => {
         );
       case "actions":
         return (
-          <div className="flex gap-1">
-            <Link href={`/product/1`}>
-              <Button
-                size="sm"
-                color="primary"
-                variant="light"
-                className="border border-solid border-[#318531] rounded-full"
-                isIconOnly
-              >
-                <Pencil className="w-4 h-4 text-[#318531]" />
+          <div className="flex justify-center items-center gap-2">
+            <Link href={`/product/${user.id}`}>
+              <Button size="sm" color="primary" variant="light" isIconOnly>
+                <Image
+                  src={"/assets/pencil-edit.svg"}
+                  alt={""}
+                  width={16}
+                  height={16}
+                />
               </Button>
             </Link>
-            <Button
-              size="sm"
-              color="danger"
-              variant="light"
-              className="border border-solid border-[#BC1320] rounded-full"
-              isIconOnly
-            >
-              <Trash className="w-4 h-4 text-[#BC1320]" />
-            </Button>
-            <Button
-              size="sm"
-              color="default"
-              variant="light"
-              className="border border-solid border-[#000000] rounded-full"
-              isIconOnly
-            >
-              <Eye className="w-4 h-4 text-[#000000]" />
-            </Button>
-            <Button
-              size="sm"
-              color="danger"
-              variant="light"
-              className="border border-solid border-[#BC1320] rounded-full"
-              isIconOnly
-            >
-              <Ban className="w-4 h-4 text-[#BC1320]" />
+            <Link href={`/product/${user.id}`}>
+              <Button size="sm" color="danger" variant="light" isIconOnly>
+                <Image
+                  src={"/assets/trash-delete.svg"}
+                  alt={""}
+                  width={16}
+                  height={16}
+                />
+              </Button>
+            </Link>
+            <Button size="sm" color="default" variant="light" isIconOnly>
+              <Image
+                src={"/assets/eye-view.svg"}
+                alt={""}
+                width={16}
+                height={16}
+              />
             </Button>
           </div>
         );
@@ -625,7 +614,7 @@ const ProductTable = () => {
           showShadow
           color="primary"
           page={page}
-          total={pages+5}
+          total={pages + 5}
           onChange={setPage}
           boundaries={0}
         />
