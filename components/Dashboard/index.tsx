@@ -153,20 +153,42 @@ const DashboardPage: React.FC = () => {
           <CardBody>
             <div className="flex flex-col items-center space-y-4">
               {/* Circular Progress */}
-              <Progress showValueLabel={true} value={75} />
-              <span className="text-sm font-medium text-green-500 bg-green-100 px-2 py-0.5 rounded-full">
-                +10%
-              </span>
-
+              <div className="relative flex justify-center items-center">
+                <div style={{ clipPath: "inset(0 0 50% 0)" }}>
+                  <CircularProgress
+                    classNames={{
+                      svg: "w-60 h-60 xl:w-60 xl:h-60 lg:w-48 lg:h-48 md:w-60 md:h-60",
+                      indicator: "stroke-blue-500",
+                      track: "stroke-blue-100",
+                    }}
+                    value={salesData.percentage}
+                    strokeWidth={2}
+                    showValueLabel={true}
+                    valueLabel={
+                      <div
+                        className="text-center"
+                        style={{ transform: "translateY(-50%)" }}
+                      >
+                        <div className="text-2xl font-bold">
+                          {(salesData.total / 1000).toFixed(1)}
+                        </div>
+                        <div className="text-sm font-medium text-green-500 bg-green-100 px-2 py-0.5 rounded-full">
+                          +{salesData.percentage}%
+                        </div>
+                      </div>
+                    }
+                  />
+                </div>
+              </div>
               {/* Text */}
-              <p className="text-center text-sm text-gray-600">
-                You succeed earn{" "}
+              <p className="absolute bottom-24 text-center text-sm text-gray-600">
+                You succeed earn
                 <span className="font-bold text-gray-800">$240</span> today, its
                 higher than yesterday
               </p>
 
               {/* Statistics */}
-              <div className="flex justify-between w-full mt-4 text-center">
+              <div className="absolute bottom-8 flex justify-between w-full mt-4 text-center">
                 <div>
                   <p className="text-sm text-gray-500">Target</p>
                   <p className="font-bold text-red-500">$20k</p>

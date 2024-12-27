@@ -1,6 +1,16 @@
 export const revenueData = [
   { month: "Jan", revenue: 600, sales: 400 },
-  { month: "Feb", revenue: 800, sales: 600 },
+  { month: "Feb", revenue: 800, sales: 100 },
+  { month: "Mar", revenue: 500, sales: 200 },
+  { month: "Apr", revenue: 200, sales: 300 },
+  { month: "May", revenue: 300, sales: 500 },
+  { month: "Jun", revenue: 300, sales: 500 },
+  { month: "July", revenue: 300, sales: 500 },
+  { month: "Aug", revenue: 300, sales: 500 },
+  { month: "Sept", revenue: 300, sales: 500 },
+  { month: "Oct", revenue: 300, sales: 500 },
+  { month: "Nov", revenue: 300, sales: 500 },
+  { month: "Dec", revenue: 300, sales: 500 },
 ];
 
 export const recentOrders = [
