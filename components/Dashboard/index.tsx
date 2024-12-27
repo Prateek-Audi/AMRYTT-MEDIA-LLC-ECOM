@@ -16,7 +16,6 @@ import {
   Chip,
   Button,
   Pagination,
-  Progress,
 } from "@nextui-org/react";
 import {
   LineChart,
