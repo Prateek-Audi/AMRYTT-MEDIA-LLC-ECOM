@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
 import { MenuItem, SidebarProps } from "@/types/sidebar";
 import styles from "./sidebar.module.css";
 import CustomIcon from "../CustomIcon";
