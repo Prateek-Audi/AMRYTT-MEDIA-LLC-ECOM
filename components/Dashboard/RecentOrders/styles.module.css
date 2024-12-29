@@ -1,0 +1,11 @@
+.th:first-child {
+    border-radius: 0px;
+  }
+  
+  .th:last-child {
+    border-radius: 0px;
+  }
+  
+  .tr:last-child {
+    border: none;
+  }

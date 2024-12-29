@@ -1,17 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import * as Icons from "react-icons/fa";
 import Image from "next/image";
-import { HiMiniSquares2X2 } from "react-icons/hi2";
 import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
 import { MenuItem, SidebarProps } from "@/types/sidebar";
 import styles from "./sidebar.module.css";
+import CustomIcon from "../CustomIcon";
 
 const Sidebar: React.FC<SidebarProps> = ({ menuItems, mobile }) => {
   const renderMenuItem = (item: MenuItem, depth = 0) => {
-    const IconComponent =
-      Icons[item.icon as keyof typeof Icons] || HiMiniSquares2X2;
-
     const fontSizeClass =
       depth === 0
         ? "text-sm font-bold hover:bg-[#EAF8FF] hover:text-[#2086BF]"
@@ -26,17 +22,30 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems, mobile }) => {
             <summary
               className={`flex text-[#4A4C56] hover:border-l-4 hover:border-[#2086BF] items-center gap-2 mb-2 cursor-pointer px-5 py-3 ${fontSizeClass}`}
             >
-              <IconComponent
+              <CustomIcon
+                icon={item.icon}
                 className={`${
                   depth === 0 ? "h-5 w-5" : depth === 1 ? "h-3 w-3" : ""
                 }`}
               />
               <span className="flex-1">{item.label}</span>
               <span className="ml-auto group-open:hidden">
-                <IoMdArrowDropdown className="h-4 w-4" />
+                <Image
+                  src="/assets/caret-down.svg"
+                  alt="Logo"
+                  width={20}
+                  height={20}
+                  className="w-5"
+                />
               </span>
               <span className="ml-auto hidden group-open:block">
-                <IoMdArrowDropup className="h-4 w-4" />
+                <Image
+                  src="/assets/caret-up.svg"
+                  alt="Logo"
+                  width={150}
+                  height={40}
+                  className="w-auto"
+                />
               </span>
             </summary>
             <ul className={`${depth === 1 ? "pl-4" : ""}`}>
@@ -56,7 +65,8 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems, mobile }) => {
           } py-3 transition-all hover:border-l-4 hover:border-[#2086BF] ${fontSizeClass}`}
         >
           {depth === 0 ? (
-            <IconComponent
+            <CustomIcon
+              icon={item.icon}
               className={`${depth === 0 ? "h-5 w-5" : "h-3 w-3"}`}
             />
           ) : null}

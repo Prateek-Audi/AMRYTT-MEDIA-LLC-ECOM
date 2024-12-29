@@ -2,7 +2,11 @@ import React from "react";
 import { RangeCalendar } from "@nextui-org/react";
 import { today, getLocalTimeZone } from "@internationalized/date";
 
-const DatePicker: React.FC = () => {
+type Props = {
+  onCancel: () => void;
+};
+
+const DatePicker: React.FC<Props> = ({ onCancel }) => {
   const weekDaysCSS =
     "text-[#344054] text-xs font-medium hover:text-[#16597F] hover:bg-[#EAF8FF] px-2 py-2 hover:rounded-md cursor-pointer";
 
@@ -64,10 +68,16 @@ const DatePicker: React.FC = () => {
             />
           </div>
           <div className="flex gap-2 w-full space-x-1">
-            <button className="w-full px-3 py-1 border border-[#D0D5DD] text-xs text-gray-600 hover:bg-gray-100 rounded">
+            <button
+              onClick={onCancel}
+              className="w-full px-3 py-1 border border-[#D0D5DD] text-xs text-gray-600 hover:bg-gray-100 rounded"
+            >
               Cancel
             </button>
-            <button className="w-full px-3 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600">
+            <button
+              onClick={onCancel}
+              className="w-full px-3 py-1 text-xs text-white bg-blue-500 rounded hover:bg-blue-600"
+            >
               Apply
             </button>
           </div>

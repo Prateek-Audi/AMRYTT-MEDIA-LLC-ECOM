@@ -10,10 +10,10 @@ import "react-toastify/dist/ReactToastify.css";
 async function getMenuItems(): Promise<MenuItem[]> {
   try {
     return [
-      { label: "Dashboard", icon: "", href: "/", badgeContent: 5 },
+      { label: "Dashboard", icon: "/assets/dashboard.svg", href: "/", badgeContent: 5 },
       {
         label: "E-Commerce",
-        icon: "FaShoppingCart",
+        icon: "/assets/ecommerce.svg",
         href: "/",
         badgeContent: 2,
         children: [
@@ -41,12 +41,12 @@ async function getMenuItems(): Promise<MenuItem[]> {
       },
       {
         label: "Project",
-        icon: "FaFileAlt",
+        icon: "/assets/project.svg",
         href: "/",
       },
       {
         label: "Contact",
-        icon: "FaIdCardAlt",
+        icon: "/assets/contact.svg",
         href: "/",
         children: [
           {
@@ -58,11 +58,11 @@ async function getMenuItems(): Promise<MenuItem[]> {
       },
       {
         label: "File Manager",
-        icon: "FaFolder",
+        icon: "/assets/file-manager.svg",
         href: "/",
       },
-      { label: "Chat", icon: "FaCommentAlt", href: "/" },
-      { label: "Calendar", icon: "FaCalendarMinus", href: "/" },
+      { label: "Chat", icon: "/assets/chat.svg", href: "/" },
+      { label: "Calendar", icon: "/assets/calendar.svg", href: "/" },
     ];
   } catch (error) {
     console.error("Error fetching menu items:", error);
@@ -83,10 +83,10 @@ const AdminLayout = async ({ children }: AdminLayoutProps) => {
         }}
       >
         <div className="w-full h-full flex bg-[#FBFBFB] flex-1">
-          <div className={`w-[15%] ${styles.sidebar}`}>
+          <div className={`w-[18%] ${styles.sidebar}`}>
             <Sidebar menuItems={menuItems} />
           </div>
-          <main className="w-[85%] flex-1 h-full">
+          <main className={`w-[82%] flex-1 h-full ${styles["right-content"]}`}>
             <NavBar menuItems={menuItems} />
             <div className="overflow-auto h-full max-h-[86vh] max-w-full rounded-md custom-scrollbar">
               {children}

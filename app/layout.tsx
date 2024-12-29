@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Public_Sans as FontSans } from "next/font/google";
 import { NextUIProvider } from "@nextui-org/react";
 import "./globals.css";
 
