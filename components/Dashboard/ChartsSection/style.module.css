@@ -3,8 +3,17 @@
     position: absolute;
     bottom: 40%;
   }
+}
+
+@media (max-width: 1025px) {
+  .target-note {
+    position: absolute;
+    bottom: 35%;
+  }
 
   .target-values {
+    position: absolute;
+    bottom: 10%;
   }
 }
 @media (max-width: 426px) {

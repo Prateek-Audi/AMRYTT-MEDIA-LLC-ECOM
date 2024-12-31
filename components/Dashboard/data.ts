@@ -107,9 +107,9 @@ export const categories = [
 ];
 
 export const customers = [
-  { country: "USA", customers: 1240, growth: 80 },
-  { country: "Japan", customers: 1240, growth: 60 },
-  { country: "France", customers: 1240, growth: 49 },
-  { country: "Germany", customers: 1240, growth: 100 },
-  { country: "South Korea", customers: 1240, growth: 50 },
+  { country: 'USA', customers: 1240, growth: 80, color: '#2DD4BF' },
+  { country: 'Japan', customers: 1240, growth: 60, color: '#FB923C' },
+  { country: 'France', customers: 1240, growth: 49, color: '#FCD34D' },
+  { country: 'Germany', customers: 1240, growth: 100, color: '#3B82F6' },
+  { country: 'South Korea', customers: 1240, growth: 50, color: '#EF4444' }
 ];

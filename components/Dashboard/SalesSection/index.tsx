@@ -4,18 +4,71 @@ import {
   CardHeader,
   CircularProgress,
 } from "@nextui-org/react";
-import { categories, salesData, topProducts } from "../data";
+import { salesData, topProducts } from "../data";
+import Image from "next/image";
+
+export const categories = [
+  {
+    image: "/assets/smartphone.svg",
+    name: "Smartphone",
+    value: 1509,
+    change: 12,
+    bgColor: "#EAF8FF",
+  },
+  {
+    image: "/assets/tablet.svg",
+    name: "Tablet",
+    value: 1460,
+    change: -5,
+    bgColor: "#FFF0EA",
+  },
+  {
+    image: "/assets/headphones.svg",
+    name: "Earphone",
+    value: 1229,
+    change: 0,
+    bgColor: "#E9FAF7",
+  },
+  {
+    image: "/assets/laptop.svg",
+    name: "Laptop & PC",
+    value: 982,
+    change: 19,
+    bgColor: "#FEEAEC",
+  },
+  {
+    image: "/assets/mouse.svg",
+    name: "Mouse",
+    value: 791,
+    change: -25,
+    bgColor: "#EAF8FF",
+  },
+  {
+    image: "/assets/pendrive.svg",
+    name: "Hardisk & USB Drive",
+    value: 679,
+    change: 11,
+    bgColor: "#FFF8DE",
+  },
+  {
+    image: "/assets/camera.svg",
+    name: "Camera",
+    value: 679,
+    change: 11,
+    bgColor: "Gray-50",
+  },
+];
 
 const SalesSection: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-1 gap-4 ">
+    <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-4 ">
       {/* Sales Source Card */}
-      <Card className="w-full max-w-md bg-white">
-        <CardHeader className="flex justify-between items-center px-6 pt-6 pb-0">
+      <Card className="w-full p-4 shadow-none hover:shadow-lg">
+        <CardHeader className="flex justify-between items-center ">
           <h3 className="text-xl font-semibold text-[#1D1F2C]">Sales Source</h3>
           <button className="text-gray-400 text-xl leading-none">⋮</button>
         </CardHeader>
-        <CardBody className="px-6 pt-4 pb-6">
+        <CardBody>
           <div className="relative flex justify-center items-center mb-6">
             <CircularProgress
               classNames={{
@@ -32,15 +85,15 @@ const SalesSection: React.FC = () => {
                     ${(salesData.total / 1000).toFixed(1)}k
                   </div>
                   <div className="w-full flex items-center justify-center">
-                  <div className="w-fit px-2 py-1 bg-[#E9FAF7] rounded text-green-600 text-xs">
-                    +{salesData.percentage}%
-                  </div>
+                    <div className="w-fit px-2 py-1 bg-[#E9FAF7] rounded text-green-600 text-xs">
+                      +{salesData.percentage}%
+                    </div>
                   </div>
                 </div>
               }
             />
           </div>
-          <div className="space-y-3">
+          <div className="space-y-2">
             {salesData.sources.map((source, index) => (
               <div key={index} className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
@@ -55,7 +108,9 @@ const SalesSection: React.FC = () => {
                         : "bg-blue-100"
                     }`}
                   />
-                  <span className="text-sm font-medium text-[#4A4C56]">{source.name}</span>
+                  <span className="text-sm font-medium text-[#4A4C56]">
+                    {source.name}
+                  </span>
                 </div>
                 <span className="text-base font-medium text-[#1D1F2C]">
                   ${source.value.toLocaleString()}
@@ -70,10 +125,10 @@ const SalesSection: React.FC = () => {
       <Card className="w-full p-4 shadow-none hover:shadow-lg">
         <CardHeader className="flex justify-between">
           <div>
-            <p className="text-lg">Top Product</p>
+            <p className="text-xl font-semibold text-[#1D1F2C]">Top Product</p>
             <p className="text-sm text-gray-500">Top Product in This Month</p>
           </div>
-          <button className="text-gray-400">⋮</button>
+          <button className="text-gray-400 text-xl leading-none">⋮</button>
         </CardHeader>
         <CardBody>
           <div className="space-y-4">
@@ -94,32 +149,49 @@ const SalesSection: React.FC = () => {
       </Card>
 
       {/* Top Category Card */}
-      <Card className="w-full p-4 shadow-none hover:shadow-lg">
+      <Card className="w-full xl:col-span-1 lg:col-span-2 md:col-span-1 p-4 shadow-none hover:shadow-lg">
         <CardHeader className="flex justify-between">
           <div>
-            <p className="text-lg">Top Category</p>
+            <p className="text-xl font-semibold text-[#1D1F2C]">Top Category</p>
             <p className="text-sm text-gray-500">Top Category in This Month</p>
           </div>
-          <button className="text-gray-400">⋮</button>
+          <button className="text-gray-400 text-xl leading-none">⋮</button>
         </CardHeader>
         <CardBody>
-          <div className="space-y-5">
+          <div className="space-y-3">
             {categories.map((category, index) => (
               <div key={index} className="flex justify-between items-center">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gray-100 rounded-lg"></div>
+                  <div className={`p-3 bg-[${category.bgColor}] rounded-full`}>
+                    <Image
+                      src={category.image}
+                      alt={""}
+                      width={18}
+                      height={18}
+                    />
+                  </div>
                   <span className="text-sm font-medium">{category.name}</span>
                 </div>
                 <div className="flex items-center gap-2 text-right">
                   <p className="font-medium">{category.value}</p>
-                  <p
-                    className={`text-xs ${
-                      category.change >= 0 ? "text-green-500" : "text-red-500"
-                    }`}
-                  >
-                    {category.change >= 0 ? "+" : ""}
-                    {category.change}%
-                  </p>
+                  <div className="w-full flex items-center justify-center">
+                    <div
+                      className={`w-fit px-2 py-1 ${
+                        category.change >= 0 ? "bg-[#E9FAF7]" : "bg-[#FFF0EA]"
+                      } rounded text-green-600 text-xs`}
+                    >
+                      <p
+                        className={`text-xs ${
+                          category.change >= 0
+                            ? "text-green-500"
+                            : "text-red-500"
+                        }`}
+                      >
+                        {category.change >= 0 ? "+" : ""}
+                        {category.change}%
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}

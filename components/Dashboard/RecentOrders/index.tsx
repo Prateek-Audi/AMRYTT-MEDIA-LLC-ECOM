@@ -35,13 +35,13 @@ const RecentOrders: React.FC = () => {
   };
 
   return (
-    <Card className="xl:col-span-2 lg:col-span-2 md:col-span-1 cursor-pointer shadow-none hover:shadow-lg">
+    <Card className="xl:col-span-2 lg:col-span-1 md:col-span-1 cursor-pointer shadow-none hover:shadow-lg">
       <CardHeader className="flex justify-between p-6">
         <div className="flex items-center gap-2">
           <h3 className="text-lg font-semibold">Recent Orders</h3>
           <Chip
             size="md"
-            className="bg-[#E9FAF7] text-sm font-bold text-[#1A9882] rounded-lg"
+            className={`bg-[#E9FAF7] text-sm font-bold text-[#1A9882] rounded-lg ${styles["see-all"]}`}
           >
             +2 Orders
           </Chip>
@@ -95,7 +95,9 @@ const RecentOrders: React.FC = () => {
               <ColumnEditor onClose={handleFilterClose} />
             </PopoverContent>
           </Popover>
-          <Button className="bg-[#EAF8FF] text-sm font-semibold text-[#2086BF] rounded-lg">
+          <Button
+            className={`bg-[#EAF8FF] text-sm font-semibold text-[#2086BF] rounded-lg ${styles["see-all"]}`}
+          >
             See All
           </Button>
         </div>
