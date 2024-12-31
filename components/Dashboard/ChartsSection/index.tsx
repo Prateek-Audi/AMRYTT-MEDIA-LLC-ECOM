@@ -16,7 +16,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import styles from "style.module.css";
+import styles from "./style.module.css";
 
 const ChartsSection: React.FC = () => {
   return (
@@ -69,14 +69,16 @@ const ChartsSection: React.FC = () => {
               </div>
             </div>
             {/* Text */}
-            <p className="absolute bottom-24 text-center text-sm font-normal text-[#667085]">
+            <p
+              className={`absolute bottom-24 text-center text-sm font-normal text-[#667085] ${styles["target-note"]}`}
+            >
               You succeed earn
-              <span className="text-[#1D1F2C]"> $240</span> today, its
-              higher than yesterday
+              <span className="text-[#1D1F2C]"> $240</span> today, its higher
+              than yesterday
             </p>
 
             {/* Statistics */}
-            <div className="absolute bottom-8 flex justify-evenly w-full mt-4 text-center">
+            <div className={`absolute bottom-8 flex justify-evenly w-full mt-4 text-center ${styles['target-values']}`}>
               <div className="flex flex-col gap-2">
                 <p className="text-xs font-medium text-[#667085]">Target</p>
                 <div className="flex items-center gap-1">

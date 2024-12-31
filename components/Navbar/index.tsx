@@ -51,7 +51,7 @@ const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
           size="sm"
           startContent={<SearchIcon size={18} />}
           type="search"
-          className={`${styles["custom-search"]}`}
+          className={`${styles["custom-search"]} placeholder:text-sm`}
         />
       </NavbarContent>
       <NavbarContent justify="end">
