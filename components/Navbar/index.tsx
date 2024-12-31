@@ -33,7 +33,7 @@ const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
   };
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} className="h-20 bg-[#FBFBFB]">
+    <Navbar onMenuOpenChange={setIsMenuOpen} className="h-[82px] bg-[#FBFBFB]">
       <NavbarContent justify="start">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -60,8 +60,8 @@ const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
             src={"/assets/calendar.svg"}
             alt={""}
             className="text-[#858D9D] cursor-pointer"
-            width={24}
-            height={24}
+            width={18}
+            height={18}
           />
           <Badge
             color="primary"
@@ -72,8 +72,8 @@ const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
               src={"/assets/bell.svg"}
               alt={""}
               className="text-[#858D9D] cursor-pointer"
-              width={24}
-              height={24}
+              width={18}
+              height={18}
             />
           </Badge>
           <Badge
@@ -85,12 +85,12 @@ const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
               src={"/assets/message.svg"}
               alt={""}
               className="text-[#858D9D] cursor-pointer"
-              width={24}
-              height={24}
+              width={18}
+              height={18}
             />
           </Badge>
           <Avatar
-            className="w-8 h-8 cursor-pointer"
+            className="w-7 h-7 cursor-pointer"
             src="https://images.unsplash.com/broken"
             alt="User Avatar"
           />
@@ -110,7 +110,7 @@ const NavBar: React.FC<NavbarProps> = ({ menuItems }) => {
                     shape="circle"
                   >
                     <Avatar
-                      className="w-9 h-9"
+                      className="w-8 h-8"
                       src="https://images.unsplash.com/broken"
                       alt="User Avatar"
                     />

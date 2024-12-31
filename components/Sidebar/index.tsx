@@ -87,7 +87,7 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems, mobile }) => {
       } relative`}
       style={{ height: mobile ? "100vh" : "100%" }}
     >
-      <div className="flex items-center px-6 pt-2 items-center lg:h-[59px] cursor-pointer">
+      <div className="flex items-center p-6 items-center lg:h-[82px] cursor-pointer">
         <Image
           src="/assets/logo.svg"
           alt="Logo"
@@ -100,7 +100,7 @@ const Sidebar: React.FC<SidebarProps> = ({ menuItems, mobile }) => {
         </span>
       </div>
       <div
-        className={`flex-1 mt-6 overflow-y-auto custom-scrollbar ${styles["custom-height"]}`}
+        className={`flex-1 py-2 overflow-y-auto custom-scrollbar ${styles["custom-height"]}`}
         style={{ maxHeight: "calc(100vh - 100px)" }}
       >
         <nav className="grid items-start text-sm font-medium">
