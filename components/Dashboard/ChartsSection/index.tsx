@@ -60,8 +60,10 @@ const ChartsSection: React.FC = () => {
                       <div className="text-2xl font-bold">
                         {(salesData.total / 1000).toFixed(2)}%
                       </div>
-                      <div className="text-sm font-medium text-green-500 bg-green-100 px-2 py-0.5 rounded-full">
-                        +{salesData.percentage}%
+                      <div className="w-full flex items-center justify-center">
+                        <div className="w-fit px-2 py-1 bg-[#E9FAF7] rounded text-green-600 text-xs">
+                          +{salesData.percentage}%
+                        </div>
                       </div>
                     </div>
                   }
@@ -78,7 +80,9 @@ const ChartsSection: React.FC = () => {
             </p>
 
             {/* Statistics */}
-            <div className={`absolute bottom-8 flex justify-evenly w-full mt-4 text-center ${styles['target-values']}`}>
+            <div
+              className={`absolute bottom-8 flex justify-evenly w-full mt-4 text-center ${styles["target-values"]}`}
+            >
               <div className="flex flex-col gap-2">
                 <p className="text-xs font-medium text-[#667085]">Target</p>
                 <div className="flex items-center gap-1">
@@ -140,67 +144,69 @@ const ChartsSection: React.FC = () => {
         </CardHeader>
 
         <CardBody>
-          <ResponsiveContainer width="99%" height={300}>
-            <LineChart data={revenueData}>
-              {/* Grid */}
-              <CartesianGrid strokeDasharray="4 4" vertical={false} />
+          <div className="overflow-x-auto min-w-[600px]">
+            <ResponsiveContainer width="99%" height={300}>
+              <LineChart data={revenueData}>
+                {/* Grid */}
+                <CartesianGrid strokeDasharray="4 4" vertical={false} />
 
-              {/* Axes */}
-              <XAxis
-                dataKey="month"
-                axisLine={false}
-                tickLine={false}
-                tick={{ fill: "#888", fontSize: 12 }}
-                interval={1}
-              />
-              <YAxis
-                tickFormatter={(value) =>
-                  value >= 1000 ? `$${value / 1000}k` : `$${value}`
-                }
-                axisLine={false}
-                tickLine={false}
-                tick={{ fill: "#888", fontSize: 12 }}
-                domain={[0, 1200]}
-                ticks={[0, 200, 400, 600, 800, 1000, 1200]}
-              />
-
-              {/* Tooltip */}
-              <Tooltip
-                formatter={(value, name) => {
-                  if (name === "sales") {
-                    return [`${value}%`, "Sales"];
+                {/* Axes */}
+                <XAxis
+                  dataKey="month"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: "#888", fontSize: 12 }}
+                  interval={1}
+                />
+                <YAxis
+                  tickFormatter={(value) =>
+                    value >= 1000 ? `$${value / 1000}k` : `$${value}`
                   }
-                  return [`$${value.toLocaleString()}`, "Revenue"];
-                }}
-                contentStyle={{
-                  backgroundColor: "#333",
-                  borderRadius: "8px",
-                  color: "#fff",
-                  padding: "10px",
-                  border: "none",
-                }}
-                labelFormatter={() => ""}
-                itemStyle={{ color: "#fff" }}
-                cursor={{ strokeDasharray: "3 3", stroke: "#2086BF" }}
-              />
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: "#888", fontSize: 12 }}
+                  domain={[0, 1200]}
+                  ticks={[0, 200, 400, 600, 800, 1000, 1200]}
+                />
 
-              {/* Lines */}
-              <Line
-                type="monotone"
-                dataKey="revenue"
-                stroke="#2086BF"
-                strokeWidth={2.5}
-                dot={false}
-              />
-              <Line
-                type="monotone"
-                dataKey="sales"
-                stroke="#F86624"
-                strokeWidth={2.5}
-                dot={false}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+                {/* Tooltip */}
+                <Tooltip
+                  formatter={(value, name) => {
+                    if (name === "sales") {
+                      return [`${value}%`, "Sales"];
+                    }
+                    return [`$${value.toLocaleString()}`, "Revenue"];
+                  }}
+                  contentStyle={{
+                    backgroundColor: "#333",
+                    borderRadius: "8px",
+                    color: "#fff",
+                    padding: "10px",
+                    border: "none",
+                  }}
+                  labelFormatter={() => ""}
+                  itemStyle={{ color: "#fff" }}
+                  cursor={{ strokeDasharray: "3 3", stroke: "#2086BF" }}
+                />
+
+                {/* Lines */}
+                <Line
+                  type="monotone"
+                  dataKey="revenue"
+                  stroke="#2086BF"
+                  strokeWidth={2.5}
+                  dot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="sales"
+                  stroke="#F86624"
+                  strokeWidth={2.5}
+                  dot={false}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
         </CardBody>
       </Card>
     </div>
