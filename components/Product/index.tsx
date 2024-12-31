@@ -23,6 +23,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { columns, users } from "./data";
 import { SearchIcon } from "./icons";
+import styles from "./style.module.css";
 
 export type ColumnType = {
   id: number;
@@ -43,7 +44,7 @@ const ProductTable = () => {
   const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
     new Set([])
   );
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [sortDescriptor, setSortDescriptor] = React.useState<SortDescriptor>({
     column: "age",
     direction: "ascending",
@@ -132,7 +133,7 @@ const ProductTable = () => {
             <Link href={`/product/${user.id}`}>
               <Button size="sm" color="danger" variant="light" isIconOnly>
                 <Image
-                  src={"/assets/trash-delete.svg"}
+                  src={"/assets/eye-view.svg"}
                   alt={""}
                   width={16}
                   height={16}
@@ -141,7 +142,7 @@ const ProductTable = () => {
             </Link>
             <Button size="sm" color="default" variant="light" isIconOnly>
               <Image
-                src={"/assets/eye-view.svg"}
+                src={"/assets/trash-delete.svg"}
                 alt={""}
                 width={16}
                 height={16}
@@ -268,12 +269,18 @@ const ProductTable = () => {
         </span>
         <Pagination
           showControls
-          showShadow
-          color="primary"
+          loop
+          classNames={{
+            item: "bg-[#EAF8FF]",
+            cursor: "bg-[#2086BF]",
+            next: "bg-[#EAF8FF]",
+            prev: "bg-[#EAF8FF]",
+          }}
           page={page}
           total={pages + 5}
           onChange={setPage}
           boundaries={0}
+          initialPage={1}
         />
       </div>
     );
@@ -286,7 +293,9 @@ const ProductTable = () => {
       bottomContent={bottomContent}
       bottomContentPlacement="inside"
       classNames={{
-        wrapper: "max-h-full",
+        wrapper: "p-0 border-none shadow-none",
+        th: `bg-white text-[#1D1F2C] py-6 px-6 ${styles.th}`,
+        td: "px-6 py-4",
       }}
       selectedKeys={selectedKeys}
       selectionMode="multiple"

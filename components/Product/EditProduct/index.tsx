@@ -10,7 +10,6 @@ import {
   CardBody,
   CardHeader,
   Chip,
-  
 } from "@nextui-org/react";
 import { ProductFormData, ProductVariation } from "@/types/product";
 import Image from "next/image";
@@ -58,24 +57,26 @@ const EditProduct: React.FC<Props> = ({ id }) => {
             </CardHeader>
             <CardBody className="space-y-4">
               <Input
-                variant="bordered"
+                variant="faded"
                 label="Product Name"
                 placeholder="Enter product name"
                 value={formData.name}
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="w-full"
+                className="w-full text-sm font-medium text-[#777980]"
                 labelPlacement="outside"
               />
               <Textarea
+                variant="faded"
                 label="Description"
                 placeholder="Enter product description"
                 value={formData.description}
                 onChange={(e) =>
                   setFormData({ ...formData, description: e.target.value })
                 }
-                className="w-full"
+                className="w-full text-sm font-medium text-[#777980]"
+                labelPlacement="outside"
               />
             </CardBody>
           </Card>
@@ -87,7 +88,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
             </CardHeader>
             <CardBody>
               <div className="border-2 border-dashed border-gray-300 rounded-lg p-8">
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap justify-center gap-4">
                   {[1, 2, 3].map((_, index) => (
                     <div
                       key={index}
@@ -116,7 +117,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
             </CardHeader>
             <CardBody className="space-y-4">
               <Input
-                variant="bordered"
+                variant="faded"
                 type="number"
                 label="Base Price"
                 placeholder="0.00"
@@ -136,6 +137,8 @@ const EditProduct: React.FC<Props> = ({ id }) => {
               />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Select
+                  labelPlacement="outside"
+                  variant="faded"
                   label="Discount Type"
                   value={formData.discountType}
                   onChange={(e) =>
@@ -150,7 +153,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                   </SelectItem>
                 </Select>
                 <Input
-                  variant="bordered"
+                  variant="faded"
                   type="number"
                   label="Discount Percentage (%)"
                   labelPlacement="outside"
@@ -165,6 +168,8 @@ const EditProduct: React.FC<Props> = ({ id }) => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Select
+                  labelPlacement="outside"
+                  variant="faded"
                   label="Tax Class"
                   value={formData.taxClass}
                   onChange={(e) =>
@@ -179,7 +184,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                   </SelectItem>
                 </Select>
                 <Input
-                  variant="bordered"
+                  variant="faded"
                   type="number"
                   label="VAT Amount (%)"
                   labelPlacement="outside"
@@ -203,7 +208,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
             <CardBody>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <Input
-                  variant="bordered"
+                  variant="faded"
                   label="SKU"
                   labelPlacement="outside"
                   value={formData.sku}
@@ -212,7 +217,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                   }
                 />
                 <Input
-                  variant="bordered"
+                  variant="faded"
                   label="Barcode"
                   value={formData.barcode}
                   labelPlacement="outside"
@@ -221,7 +226,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                   }
                 />
                 <Input
-                  variant="bordered"
+                  variant="faded"
                   type="number"
                   label="Quantity"
                   labelPlacement="outside"
@@ -249,6 +254,8 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                   className="grid grid-cols-1 md:grid-cols-2 gap-4"
                 >
                   <Select
+                    labelPlacement="outside"
+                    variant="faded"
                     label="Variation Type"
                     value={variation.type}
                     onChange={(e) => {
@@ -266,7 +273,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                   </Select>
                   <div className="flex gap-4">
                     <Input
-                      variant="bordered"
+                      variant="faded"
                       className="flex-1"
                       label="Variation"
                       value={variation.value}
@@ -281,7 +288,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                       isIconOnly
                       color="danger"
                       variant="light"
-                      className="mt-6"
+                      className="mt-6 text-3xl font-normal bg-[#FEECEE]"
                     >
                       +
                     </Button>
@@ -315,13 +322,13 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                   }
                   className="rounded text-primary"
                 />
-                <span className="text-sm text-[#777980]">
+                <span className="text-sm font-semibold text-[#2086BF]">
                   This is a physical product
                 </span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <Input
-                  variant="bordered"
+                  variant="faded"
                   type="number"
                   label="Weight (kg)"
                   labelPlacement="outside"
@@ -334,7 +341,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                   }
                 />
                 <Input
-                  variant="bordered"
+                  variant="faded"
                   type="number"
                   label="Height (cm)"
                   labelPlacement="outside"
@@ -347,7 +354,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                   }
                 />
                 <Input
-                  variant="bordered"
+                  variant="faded"
                   type="number"
                   label="Length (cm)"
                   labelPlacement="outside"
@@ -360,7 +367,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                   }
                 />
                 <Input
-                  variant="bordered"
+                  variant="faded"
                   type="number"
                   label="Width (cm)"
                   labelPlacement="outside"
@@ -384,6 +391,8 @@ const EditProduct: React.FC<Props> = ({ id }) => {
             </CardHeader>
             <CardBody className="space-y-4">
               <Select
+                labelPlacement="outside"
+                variant="faded"
                 label="Product Category"
                 value={formData.category}
                 onChange={(e) =>
@@ -417,6 +426,8 @@ const EditProduct: React.FC<Props> = ({ id }) => {
             </CardHeader>
             <CardBody>
               <Select
+                labelPlacement="outside"
+                variant="faded"
                 label="Product Status"
                 value={formData.status}
                 onChange={(e) =>

@@ -27,7 +27,7 @@ export const columns = [
       team: "Management",
       status: "active",
       age: "29",
-      avatar: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+      avatar: "https://",
       email: "tony.reichert@example.com",
     },
     {
@@ -37,7 +37,7 @@ export const columns = [
       team: "Development",
       status: "paused",
       age: "25",
-      avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+      avatar: "https://",
       email: "zoey.lang@example.com",
     },
     {
@@ -47,7 +47,7 @@ export const columns = [
       team: "Development",
       status: "active",
       age: "22",
-      avatar: "https://i.pravatar.cc/150?u=a04258114e29026702d",
+      avatar: "https://",
       email: "jane.fisher@example.com",
     },
     {
@@ -57,7 +57,7 @@ export const columns = [
       team: "Marketing",
       status: "vacation",
       age: "28",
-      avatar: "https://i.pravatar.cc/150?u=a048581f4e29026701d",
+      avatar: "https://",
       email: "william.howard@example.com",
     },
     {
@@ -67,7 +67,7 @@ export const columns = [
       team: "Sales",
       status: "active",
       age: "24",
-      avatar: "https://i.pravatar.cc/150?u=a092581d4ef9026700d",
+      avatar: "https://",
       email: "kristen.cooper@example.com",
     },
     {
@@ -76,7 +76,7 @@ export const columns = [
       role: "P. Manager",
       team: "Management",
       age: "29",
-      avatar: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+      avatar: "https://",
       email: "brian.kim@example.com",
       status: "Active",
     },
@@ -87,7 +87,7 @@ export const columns = [
       team: "Design",
       status: "paused",
       age: "27",
-      avatar: "https://i.pravatar.cc/150?u=a042581f4e29027007d",
+      avatar: "https://",
       email: "michael.hunt@example.com",
     },
     {
@@ -97,7 +97,7 @@ export const columns = [
       team: "HR",
       status: "active",
       age: "31",
-      avatar: "https://i.pravatar.cc/150?u=a042581f4e27027008d",
+      avatar: "https://",
       email: "samantha.brooks@example.com",
     },
     {
@@ -107,7 +107,7 @@ export const columns = [
       team: "Finance",
       status: "vacation",
       age: "33",
-      avatar: "https://i.pravatar.cc/150?img=4",
+      avatar: "https://",
       email: "frank.harrison@example.com",
     },
     {
@@ -117,7 +117,7 @@ export const columns = [
       team: "Operations",
       status: "active",
       age: "35",
-      avatar: "https://i.pravatar.cc/150?img=5",
+      avatar: "https://",
       email: "emma.adams@example.com",
     },
     {
@@ -127,7 +127,7 @@ export const columns = [
       team: "Development",
       status: "active",
       age: "22",
-      avatar: "https://i.pravatar.cc/150?img=8",
+      avatar: "https://",
       email: "brandon.stevens@example.com",
     },
     {
@@ -137,7 +137,7 @@ export const columns = [
       team: "Product",
       status: "paused",
       age: "28",
-      avatar: "https://i.pravatar.cc/150?img=10",
+      avatar: "https://",
       email: "megan.richards@example.com",
     },
     {
@@ -147,7 +147,7 @@ export const columns = [
       team: "Security",
       status: "active",
       age: "37",
-      avatar: "https://i.pravatar.cc/150?img=12",
+      avatar: "https://",
       email: "oliver.scott@example.com",
     },
     {
@@ -157,7 +157,7 @@ export const columns = [
       team: "Marketing",
       status: "active",
       age: "30",
-      avatar: "https://i.pravatar.cc/150?img=16",
+      avatar: "https://",
       email: "grace.allen@example.com",
     },
     {
@@ -167,7 +167,7 @@ export const columns = [
       team: "I. Technology",
       status: "paused",
       age: "31",
-      avatar: "https://i.pravatar.cc/150?img=15",
+      avatar: "https://",
       email: "noah.carter@example.com",
     },
     {
@@ -177,7 +177,7 @@ export const columns = [
       team: "Sales",
       status: "active",
       age: "29",
-      avatar: "https://i.pravatar.cc/150?img=20",
+      avatar: "https://",
       email: "ava.perez@example.com",
     },
     {
@@ -187,7 +187,7 @@ export const columns = [
       team: "Analysis",
       status: "active",
       age: "28",
-      avatar: "https://i.pravatar.cc/150?img=33",
+      avatar: "https://",
       email: "liam.johnson@example.com",
     },
     {
@@ -197,7 +197,7 @@ export const columns = [
       team: "Testing",
       status: "active",
       age: "27",
-      avatar: "https://i.pravatar.cc/150?img=29",
+      avatar: "https://",
       email: "sophia.taylor@example.com",
     },
     {
@@ -207,7 +207,7 @@ export const columns = [
       team: "Information Technology",
       status: "paused",
       age: "32",
-      avatar: "https://i.pravatar.cc/150?img=50",
+      avatar: "https://",
       email: "lucas.harris@example.com",
     },
     {
@@ -217,7 +217,7 @@ export const columns = [
       team: "Operations",
       status: "active",
       age: "26",
-      avatar: "https://i.pravatar.cc/150?img=45",
+      avatar: "https://",
       email: "mia.robinson@example.com",
     },
   ];
