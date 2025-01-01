@@ -25,28 +25,30 @@ const FilterDropdown: React.FC<Props> = ({ onClose }) => {
   const [selectedOperator, setSelectedOperator] = React.useState("<");
 
   return (
-    <div className="w-64 bg-white rounded-lg shadow-lg p-4">
-      <div className="flex justify-between items-center">
-        <h3 className="text-lg font-semibold">Filter</h3>
-      </div>
-      <div className="flex justify-end items-center bg-[#EAF8FF] p-2">
+    <div className="w-64 bg-white rounded-lg shadow-lg">
+      <h3 className="text-lg font-semibold p-4">Filter</h3>
+      <div className="w-full bg-[#EAF8FF] text-[#2086BF] text-right mb-2">
         <Button
           size="sm"
           variant="light"
           className="text-blue-500"
           onPress={onClose}
         >
-          Clear all
+          Clear All
         </Button>
       </div>
-      <Input
-        placeholder="Search"
-        className="mb-4"
-        size="sm"
-        variant="bordered"
-      />
+      <div className="px-4">
+        <Input
+          placeholder="Search"
+          className="border border-solid border-[#2086BF] rounded"
+          variant="bordered"
+          classNames={{
+            inputWrapper: "border-none",
+          }}
+        />
+      </div>
 
-      <div className="space-y-4">
+      <div className="space-y-4 p-4">
         <Checkbox value="low-to-high">Low to high</Checkbox>
         <Checkbox value="high-to-low">high to Low</Checkbox>
 
@@ -82,10 +84,13 @@ const FilterDropdown: React.FC<Props> = ({ onClose }) => {
         <Select
           label=""
           selectedKeys={[selectedOperator]}
-          className="max-w-full placeholder:text-[#667085]"
+          className="max-w-full border-none placeholder:text-[#667085]"
           onChange={(e) => setSelectedOperator(e.target.value)}
-          size="sm"
+          size="md"
           variant="bordered"
+          classNames={{
+            trigger: "border border-solid border-[#2086BF] rounded shadow-none",
+          }}
         >
           {comparisonOperators.map((operator) => (
             <SelectItem
