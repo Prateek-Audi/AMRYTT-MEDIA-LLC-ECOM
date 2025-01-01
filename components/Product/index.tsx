@@ -122,49 +122,71 @@ const ProductTable = () => {
     });
   }, [sortDescriptor, items]);
 
-  const renderCell = React.useCallback((product: User, columnKey: React.Key) => {
-    const cellValue = product[columnKey as keyof User];
+  const renderCell = React.useCallback(
+    (product: User, columnKey: React.Key) => {
+      const cellValue = product[columnKey as keyof User];
 
-    switch (columnKey) {
-      case "product":
-        return (
-          <User
-            avatarProps={{ radius: "lg", src: product.image }}
-            description={`${product.variants} Variants`}
-            name={product.name}
-          />
-        );
-      case "price":
-        return `$${product.price.toFixed(2)}`;
-      case "status":
-        return (
-          <Chip
-            className="capitalize"
-            color={statusColorMap[product.status]}
-            size="sm"
-            variant="flat"
-          >
-            {product.status}
-          </Chip>
-        );
-      case "actions":
-        return (
-          <div className="flex justify-center items-center gap-2">
-            <Button size="sm" color="primary" variant="light" isIconOnly>
-              <Image src="/assets/pencil-edit.svg" alt="" width={16} height={16} />
-            </Button>
-            <Button size="sm" color="default" variant="light" isIconOnly>
-              <Image src="/assets/eye-view.svg" alt="" width={16} height={16} />
-            </Button>
-            <Button size="sm" color="danger" variant="light" isIconOnly>
-              <Image src="/assets/trash-delete.svg" alt="" width={16} height={16} />
-            </Button>
-          </div>
-        );
-      default:
-        return cellValue;
-    }
-  }, []);
+      switch (columnKey) {
+        case "product":
+          return (
+            <User
+              avatarProps={{ radius: "lg", src: product.image }}
+              description={`${product.variants} Variants`}
+              name={product.name}
+            />
+          );
+        case "price":
+          return `$${product.price.toFixed(2)}`;
+        case "status":
+          return (
+            <Chip
+              className="capitalize"
+              color={statusColorMap[product.status]}
+              size="sm"
+              variant="flat"
+            >
+              {product.status}
+            </Chip>
+          );
+        case "actions":
+          return (
+            <div className="flex justify-center items-center gap-2">
+              <Link href={`/product/${product.id}`}>
+                <Button size="sm" color="primary" variant="light" isIconOnly>
+                  <Image
+                    src="/assets/pencil-edit.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                  />
+                </Button>
+              </Link>
+              <Link href={`/product/${product.id}`}>
+                <Button size="sm" color="default" variant="light" isIconOnly>
+                  <Image
+                    src="/assets/eye-view.svg"
+                    alt=""
+                    width={16}
+                    height={16}
+                  />
+                </Button>
+              </Link>
+              <Button size="sm" color="danger" variant="light" isIconOnly>
+                <Image
+                  src="/assets/trash-delete.svg"
+                  alt=""
+                  width={16}
+                  height={16}
+                />
+              </Button>
+            </div>
+          );
+        default:
+          return cellValue;
+      }
+    },
+    []
+  );
 
   const onRowsPerPageChange = React.useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
