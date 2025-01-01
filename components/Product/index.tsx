@@ -18,12 +18,18 @@ import {
   SortDescriptor,
   Tab,
   Tabs,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
 } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
 import { columns, users } from "./data";
 import { SearchIcon } from "./icons";
 import styles from "./style.module.css";
+import FilterDropdown from "../DropdownFilter/Filter";
+import DatePicker from "../DatePicker";
+import ColumnEditor from "../DropdownFilter/ColumnEditor";
 
 export type ColumnType = {
   id: number;
@@ -51,6 +57,39 @@ const ProductTable = () => {
   });
 
   const [page, setPage] = React.useState(1);
+  const [datePickerOpen, setDatePickerOpen] = React.useState(false);
+  const [filterOpen, setFilterOpen] = React.useState(false);
+  const [columnEditorOpen, setColumnEditorOpen] = React.useState(false);
+
+  const handleDatePickerToggle = React.useCallback(() => {
+    setDatePickerOpen(!datePickerOpen);
+    setFilterOpen(false);
+    setColumnEditorOpen(false);
+  }, []);
+
+  const handleFilterToggle = React.useCallback(() => {
+    setFilterOpen(!filterOpen);
+    setDatePickerOpen(false);
+    setColumnEditorOpen(false);
+  }, []);
+
+  const handleColumnEditorToggle = React.useCallback(() => {
+    setColumnEditorOpen(!columnEditorOpen);
+    setDatePickerOpen(false);
+    setFilterOpen(false);
+  }, []);
+
+  const handleDatePickerClose = React.useCallback(() => {
+    setDatePickerOpen(false);
+  }, []);
+
+  const handleFilterClose = React.useCallback(() => {
+    setFilterOpen(false);
+  }, []);
+
+  const handleColumnEditorClose = React.useCallback(() => {
+    setColumnEditorOpen(false);
+  }, []);
 
   const hasSearchFilter = Boolean(filterValue);
 
@@ -199,65 +238,94 @@ const ProductTable = () => {
           <div className="flex xl:flex lg:hidden md:hidden hidden gap-3">
             <Input
               isClearable
-              className="w-full sm:max-w-[40%]"
+              className="w-full sm:max-w-[40%] text-sm font-normal text-[#4A4C56]"
               placeholder="Search product..."
               startContent={<SearchIcon />}
               value={filterValue}
               onClear={() => onClear()}
               onValueChange={onSearchChange}
+              variant="bordered"
             />
-            <Button
-              color="default"
-              variant="bordered"
-              className="text-sm font-normal text-[#4A4C56] border-[#E0E2E7] rounded-lg flex gap-2"
+            <Popover
+              isOpen={datePickerOpen}
+              onOpenChange={setDatePickerOpen}
+              placement="bottom"
             >
-              <Image
-                src={"/assets/calendar.svg"}
-                alt={""}
-                width={16}
-                height={16}
-              />
-              Select Date
-            </Button>
-
-            <Button
-              color="default"
-              variant="bordered"
-              className="text-sm font-normal text-[#4A4C56] border-[#E0E2E7] rounded-lg flex gap-2"
+              <PopoverTrigger>
+                <Button
+                  color="default"
+                  variant="bordered"
+                  className="text-sm font-normal text-[#858D9D] border-[#E0E2E7] rounded-lg flex gap-2"
+                  onClick={handleDatePickerToggle}
+                >
+                  <Image
+                    src={"/assets/calendar.svg"}
+                    alt={""}
+                    width={16}
+                    height={16}
+                  />
+                  Select Date
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="p-0">
+                <DatePicker onCancel={handleDatePickerClose} />
+              </PopoverContent>
+            </Popover>
+            <Popover
+              isOpen={filterOpen}
+              onOpenChange={setFilterOpen}
+              placement="bottom"
             >
-              <Image
-                src={"/assets/setting-slider.svg"}
-                alt={""}
-                width={16}
-                height={16}
-              />
-              Filters
-            </Button>
-
-            <Button
-              color="default"
-              variant="bordered"
-              className="text-sm font-normal text-[#4A4C56] border-[#E0E2E7] rounded-lg flex gap-2"
+              <PopoverTrigger>
+                <Button
+                  color="default"
+                  variant="bordered"
+                  onClick={handleFilterToggle}
+                  className="text-sm font-normal text-[#858D9D] border-[#E0E2E7] rounded-lg flex gap-2"
+                >
+                  <Image
+                    src={"/assets/setting-slider.svg"}
+                    alt={""}
+                    width={16}
+                    height={16}
+                  />
+                  Filters
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="p-0">
+                <FilterDropdown onClose={handleFilterClose} />
+              </PopoverContent>
+            </Popover>
+            <Popover
+              isOpen={columnEditorOpen}
+              onOpenChange={setColumnEditorOpen}
+              placement="bottom"
             >
-              <Image
-                src={"/assets/edit-column.svg"}
-                alt={""}
-                width={16}
-                height={16}
-              />
-              Edit Column
-            </Button>
+              <PopoverTrigger>
+                <Button
+                  color="default"
+                  variant="bordered"
+                  onClick={handleColumnEditorToggle}
+                  className="text-sm font-normal text-[#858D9D] border-[#E0E2E7] rounded-lg flex gap-2"
+                >
+                  <Image
+                    src={"/assets/edit-column.svg"}
+                    alt={""}
+                    width={16}
+                    height={16}
+                  />
+                  Edit Column
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="p-0">
+                <ColumnEditor onClose={handleColumnEditorClose} />
+              </PopoverContent>
+            </Popover>
           </div>
         </div>
       </div>
     );
-  }, [
-    filterValue,
-    onSearchChange,
-    onRowsPerPageChange,
-    users.length,
-    hasSearchFilter,
-  ]);
+  }, [filterValue, datePickerOpen, filterOpen, columnEditorOpen]);
 
   const bottomContent = React.useMemo(() => {
     return (

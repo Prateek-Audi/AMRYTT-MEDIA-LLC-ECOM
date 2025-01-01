@@ -9,11 +9,11 @@ import {
 } from "@nextui-org/react";
 
 const comparisonOperators = [
-  { value: "<", label: "Less Than" },
-  { value: "=", label: "Equals" },
-  { value: ">", label: "Greater Than" },
-  { value: "<=", label: "Less Than Equal" },
-  { value: ">=", label: "Greater Than Equal" },
+  { value: "<", label: "(<) Less Than" },
+  { value: "=", label: "(=) Equals" },
+  { value: ">", label: "(>) Greater Than" },
+  { value: "<=", label: "(<=) Less Than Equal" },
+  { value: ">=", label: "(>=) Greater Than Equal" },
 ];
 
 type Props = {
@@ -26,8 +26,10 @@ const FilterDropdown: React.FC<Props> = ({ onClose }) => {
 
   return (
     <div className="w-64 bg-white rounded-lg shadow-lg p-4">
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center">
         <h3 className="text-lg font-semibold">Filter</h3>
+      </div>
+      <div className="flex justify-end items-center bg-[#EAF8FF] p-2">
         <Button
           size="sm"
           variant="light"
@@ -37,7 +39,6 @@ const FilterDropdown: React.FC<Props> = ({ onClose }) => {
           Clear all
         </Button>
       </div>
-
       <Input
         placeholder="Search"
         className="mb-4"
@@ -51,7 +52,6 @@ const FilterDropdown: React.FC<Props> = ({ onClose }) => {
 
         <div className="px-2">
           <Slider
-            label="Range"
             step={100}
             minValue={0}
             maxValue={10000}
@@ -80,15 +80,19 @@ const FilterDropdown: React.FC<Props> = ({ onClose }) => {
         </div>
 
         <Select
-          label="Select comparison"
+          label=""
           selectedKeys={[selectedOperator]}
-          className="max-w-full"
+          className="max-w-full placeholder:text-[#667085]"
           onChange={(e) => setSelectedOperator(e.target.value)}
           size="sm"
           variant="bordered"
         >
           {comparisonOperators.map((operator) => (
-            <SelectItem key={operator.value} value={operator.value}>
+            <SelectItem
+              key={operator.value}
+              value={operator.value}
+              className="text-xs font-medium text-[#667085]"
+            >
               {operator.label}
             </SelectItem>
           ))}

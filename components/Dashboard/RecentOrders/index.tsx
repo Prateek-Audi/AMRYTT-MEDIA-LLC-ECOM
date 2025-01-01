@@ -21,7 +21,7 @@ import { recentOrders } from "../data";
 import styles from "./styles.module.css";
 import { useState } from "react";
 import DatePicker from "@/components/DatePicker";
-import ColumnEditor from "@/components/DropdownFilter/ColumnEditor";
+import FilterDropdown from "@/components/DropdownFilter/Filter";
 
 const RecentOrders: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -92,7 +92,7 @@ const RecentOrders: React.FC = () => {
               </Button>
             </PopoverTrigger>
             <PopoverContent className="p-0">
-              <ColumnEditor onClose={handleFilterClose} />
+              <FilterDropdown onClose={handleFilterClose} />
             </PopoverContent>
           </Popover>
           <Button
