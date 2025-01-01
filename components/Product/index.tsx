@@ -410,7 +410,7 @@ const ProductTable = () => {
         bottomContent={bottomContent}
         bottomContentPlacement="inside"
         classNames={{
-          wrapper: "p-0 border-none shadow-none overflow-hidden",
+          wrapper: "p-0 border-none shadow-none overflow-y-hidden",
           th: `bg-white text-[#1D1F2C] py-6 px-6 ${styles.th}`,
           td: "px-6 py-4",
         }}

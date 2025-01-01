@@ -60,7 +60,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
             color="primary"
             variant="light"
             isIconOnly
-            className="w-fit flex items-center gap-3 px-4 bg-[#FFFFFF] rounded-lg"
+            className="w-fit flex items-center gap-3 px-4 bg-[#FFFFFF] border border-solid border-[#858D9D] rounded-lg"
           >
             <Image src="/assets/cross.svg" alt="" width={16} height={16} />
             <span className="ml-2 text-sm font-semibold text-[#858D9D]">
@@ -172,6 +172,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                   <Select
                     labelPlacement="outside"
                     variant="faded"
+                    placeholder="Select type"
                     label="Discount Type"
                     value={formData.discountType}
                     onChange={(e) =>
@@ -203,6 +204,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                   <Select
                     labelPlacement="outside"
                     variant="faded"
+                    placeholder="Select tax"
                     label="Tax Class"
                     value={formData.taxClass}
                     onChange={(e) =>
@@ -243,6 +245,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                   <Input
                     variant="faded"
                     label="SKU"
+                    placeholder="Enter SKU"
                     labelPlacement="outside"
                     value={formData.sku}
                     onChange={(e) =>
@@ -252,6 +255,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                   <Input
                     variant="faded"
                     label="Barcode"
+                    placeholder="Enter Barcode"
                     value={formData.barcode}
                     labelPlacement="outside"
                     onChange={(e) =>
@@ -290,6 +294,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                       labelPlacement="outside"
                       variant="faded"
                       label="Variation Type"
+                      placeholder="Select Type"
                       value={variation.type}
                       onChange={(e) => {
                         const newVariations = [...variations];
@@ -426,6 +431,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                 <Select
                   labelPlacement="outside"
                   variant="faded"
+                  placeholder="Select category"
                   label="Product Category"
                   value={formData.category}
                   onChange={(e) =>
@@ -462,6 +468,7 @@ const EditProduct: React.FC<Props> = ({ id }) => {
                   labelPlacement="outside"
                   variant="faded"
                   label="Product Status"
+                  placeholder="Select status"
                   value={formData.status}
                   onChange={(e) =>
                     setFormData({ ...formData, status: e.target.value })
