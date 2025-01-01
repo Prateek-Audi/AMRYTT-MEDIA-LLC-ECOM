@@ -122,70 +122,42 @@ const ProductTable = () => {
     });
   }, [sortDescriptor, items]);
 
-  const renderCell = React.useCallback((user: User, columnKey: React.Key) => {
-    const cellValue = user[columnKey as keyof User];
+  const renderCell = React.useCallback((product: User, columnKey: React.Key) => {
+    const cellValue = product[columnKey as keyof User];
 
     switch (columnKey) {
-      case "name":
+      case "product":
         return (
           <User
-            avatarProps={{ radius: "lg", src: user.avatar }}
-            description={user.email}
-            name={cellValue}
-          >
-            {user.email}
-          </User>
+            avatarProps={{ radius: "lg", src: product.image }}
+            description={`${product.variants} Variants`}
+            name={product.name}
+          />
         );
-      case "role":
-        return (
-          <div className="flex flex-col">
-            <p className="text-bold text-small capitalize">{cellValue}</p>
-            <p className="text-bold text-tiny capitalize text-default-400">
-              {user.team}
-            </p>
-          </div>
-        );
+      case "price":
+        return `$${product.price.toFixed(2)}`;
       case "status":
         return (
           <Chip
             className="capitalize"
-            color={statusColorMap[user.status]}
+            color={statusColorMap[product.status]}
             size="sm"
             variant="flat"
           >
-            {cellValue}
+            {product.status}
           </Chip>
         );
       case "actions":
         return (
           <div className="flex justify-center items-center gap-2">
-            <Link href={`/product/${user.id}`}>
-              <Button size="sm" color="primary" variant="light" isIconOnly>
-                <Image
-                  src={"/assets/pencil-edit.svg"}
-                  alt={""}
-                  width={16}
-                  height={16}
-                />
-              </Button>
-            </Link>
-            <Link href={`/product/${user.id}`}>
-              <Button size="sm" color="danger" variant="light" isIconOnly>
-                <Image
-                  src={"/assets/eye-view.svg"}
-                  alt={""}
-                  width={16}
-                  height={16}
-                />
-              </Button>
-            </Link>
+            <Button size="sm" color="primary" variant="light" isIconOnly>
+              <Image src="/assets/pencil-edit.svg" alt="" width={16} height={16} />
+            </Button>
             <Button size="sm" color="default" variant="light" isIconOnly>
-              <Image
-                src={"/assets/trash-delete.svg"}
-                alt={""}
-                width={16}
-                height={16}
-              />
+              <Image src="/assets/eye-view.svg" alt="" width={16} height={16} />
+            </Button>
+            <Button size="sm" color="danger" variant="light" isIconOnly>
+              <Image src="/assets/trash-delete.svg" alt="" width={16} height={16} />
             </Button>
           </div>
         );
@@ -325,7 +297,13 @@ const ProductTable = () => {
         </div>
       </div>
     );
-  }, [filterValue, datePickerOpen, filterOpen, columnEditorOpen]);
+  }, [
+    filterValue,
+    datePickerOpen,
+    filterOpen,
+    columnEditorOpen,
+    onRowsPerPageChange,
+  ]);
 
   const bottomContent = React.useMemo(() => {
     return (
