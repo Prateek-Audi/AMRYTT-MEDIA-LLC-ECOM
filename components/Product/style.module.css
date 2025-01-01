@@ -1,7 +1,15 @@
 .th:first-child {
-    border-radius: 0px;
+  border-radius: 0px;
+}
+
+.th:last-child {
+  border-radius: 0px;
+}
+
+@media (max-width: 426px) {
+  .breadcrumb-add {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .th:last-child {
-    border-radius: 0px;
-  }
+}

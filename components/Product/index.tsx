@@ -30,6 +30,7 @@ import styles from "./style.module.css";
 import FilterDropdown from "../DropdownFilter/Filter";
 import DatePicker from "../DatePicker";
 import ColumnEditor from "../DropdownFilter/ColumnEditor";
+import Breadcrumb from "../BreadCrumb";
 
 export type ColumnType = {
   id: number;
@@ -167,7 +168,7 @@ const ProductTable = () => {
         case "actions":
           return (
             <div className="flex justify-center items-center">
-              <Link href={`/product/${product.id}`}>
+              <Link href={`/product/Edit-Product`}>
                 <Button size="sm" color="primary" variant="light" isIconOnly>
                   <Image
                     src="/assets/pencil-edit.svg"
@@ -371,45 +372,78 @@ const ProductTable = () => {
   }, [selectedKeys, items.length, page, pages, hasSearchFilter]);
 
   return (
-    <Table
-      isHeaderSticky
-      aria-label="Example table with custom cells, pagination and sorting"
-      bottomContent={bottomContent}
-      bottomContentPlacement="inside"
-      classNames={{
-        wrapper: "p-0 border-none shadow-none overflow-hidden",
-        th: `bg-white text-[#1D1F2C] py-6 px-6 ${styles.th}`,
-        td: "px-6 py-4",
-      }}
-      selectedKeys={selectedKeys}
-      selectionMode="multiple"
-      sortDescriptor={sortDescriptor}
-      topContent={topContent}
-      topContentPlacement="outside"
-      onSelectionChange={setSelectedKeys}
-      onSortChange={setSortDescriptor}
-    >
-      <TableHeader columns={headerColumns}>
-        {(column) => (
-          <TableColumn
-            key={column.uid}
-            align={column.uid === "actions" ? "center" : "start"}
-            allowsSorting={column.sortable}
+    <div className="w-full h-full flex flex-col">
+      <div
+        className={`flex items-center justify-between ${styles["breadcrumb-add"]}`}
+      >
+        <Breadcrumb />
+        <div className="flex items-center gap-2">
+          <Button
+            size="md"
+            color="primary"
+            variant="light"
+            isIconOnly
+            className="w-fit flex items-center gap-3 px-4 bg-[#EAF8FF] rounded-lg"
           >
-            {column.name}
-          </TableColumn>
-        )}
-      </TableHeader>
-      <TableBody emptyContent={"No users found"} items={sortedItems}>
-        {(item) => (
-          <TableRow key={item.id}>
-            {(columnKey) => (
-              <TableCell>{renderCell(item, columnKey)}</TableCell>
-            )}
-          </TableRow>
-        )}
-      </TableBody>
-    </Table>
+            <Image src="/assets/download.svg" alt="" width={16} height={16} />
+            <span className="ml-2 text-sm font-semibold text-[#2086BF]">
+              Export
+            </span>
+          </Button>
+          <Button
+            size="md"
+            color="primary"
+            isIconOnly
+            className="w-fit flex items-center gap-3 px-4 text-white bg-[#2086BF] rounded-lg"
+          >
+            <Image src="/assets/add.svg" alt="" width={16} height={16} />
+            <span className="ml-2 text-sm font-semibold text-white">
+              Add Product
+            </span>
+          </Button>
+        </div>
+      </div>
+
+      <Table
+        isHeaderSticky
+        aria-label="Example table with custom cells, pagination and sorting"
+        bottomContent={bottomContent}
+        bottomContentPlacement="inside"
+        classNames={{
+          wrapper: "p-0 border-none shadow-none overflow-hidden",
+          th: `bg-white text-[#1D1F2C] py-6 px-6 ${styles.th}`,
+          td: "px-6 py-4",
+        }}
+        selectedKeys={selectedKeys}
+        selectionMode="multiple"
+        sortDescriptor={sortDescriptor}
+        topContent={topContent}
+        topContentPlacement="outside"
+        onSelectionChange={setSelectedKeys}
+        onSortChange={setSortDescriptor}
+      >
+        <TableHeader columns={headerColumns}>
+          {(column) => (
+            <TableColumn
+              key={column.uid}
+              align={column.uid === "actions" ? "center" : "start"}
+              allowsSorting={column.sortable}
+            >
+              {column.name}
+            </TableColumn>
+          )}
+        </TableHeader>
+        <TableBody emptyContent={"No users found"} items={sortedItems}>
+          {(item) => (
+            <TableRow key={item.id}>
+              {(columnKey) => (
+                <TableCell>{renderCell(item, columnKey)}</TableCell>
+              )}
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+    </div>
   );
 };
 

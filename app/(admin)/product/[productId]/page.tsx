@@ -1,5 +1,5 @@
-import EditProduct from "@/components/Product/EditProduct";
 import { NextPage } from "next";
+import EditProduct from "@/components/Product/EditProduct";
 
 type Props = {
   params: {

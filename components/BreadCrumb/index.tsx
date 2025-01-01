@@ -25,7 +25,7 @@ const defaultProps: BreadcrumbProps = {
       className="mx-2"
     />
   ),
-  containerClassName: "flex flex-col pb-4 px-8 bg-[#FBFBFB]",
+  containerClassName: "flex flex-col pb-4 bg-[#FBFBFB]",
   listClassName: "flex text-xs items-center text-[#667085]",
   activeItemClassName: "text-sm font-medium text-[#667085]",
   capitalizeLinks: true,
