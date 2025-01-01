@@ -36,12 +36,22 @@ export type ColumnType = {
 };
 
 const statusColorMap: Record<string, ChipProps["color"]> = {
-  active: "success",
-  paused: "danger",
-  vacation: "warning",
+  Published: "success",
+  "Out of Stock": "danger",
+  "Low Stock": "warning",
+  Draft: "default",
 };
 
-const INITIAL_VISIBLE_COLUMNS = ["name", "role", "status", "actions"];
+const INITIAL_VISIBLE_COLUMNS = [
+  "product",
+  "sku",
+  "category",
+  "stock",
+  "price",
+  "status",
+  "added",
+  "actions",
+];
 
 type User = (typeof users)[0];
 
@@ -135,6 +145,12 @@ const ProductTable = () => {
               name={product.name}
             />
           );
+        case "sku":
+          return (
+            <p className="text-sm text-[#2086BF] font-semibold">
+              {product.sku}
+            </p>
+          );
         case "price":
           return `$${product.price.toFixed(2)}`;
         case "status":
@@ -150,7 +166,7 @@ const ProductTable = () => {
           );
         case "actions":
           return (
-            <div className="flex justify-center items-center gap-2">
+            <div className="flex justify-center items-center">
               <Link href={`/product/${product.id}`}>
                 <Button size="sm" color="primary" variant="light" isIconOnly>
                   <Image
@@ -361,7 +377,7 @@ const ProductTable = () => {
       bottomContent={bottomContent}
       bottomContentPlacement="inside"
       classNames={{
-        wrapper: "p-0 border-none shadow-none",
+        wrapper: "p-0 border-none shadow-none overflow-hidden",
         th: `bg-white text-[#1D1F2C] py-6 px-6 ${styles.th}`,
         td: "px-6 py-4",
       }}
